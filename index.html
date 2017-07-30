@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<title>SecuCar</title>
+		<!*-- Include stylesheet -->
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+
+	<body>	
+		<button id="button">Open Modal</button>
+		
+		<div id="mainPage" class="mainPage">
+			<table class="table">
+				<tr>
+					<th>Track number</th>
+					<th>Track start date</th>
+					<th>Track start coordinations</th>
+					<th>Track end date</th>
+					<th>Track end coordinations</th>
+					<th>Track length</th>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="modal_map" class="modal">
+			
+			<div id="modal_map_content" class="modal-content">
+				<span class="close">&times;</span>
+				<div id="map" class="map"></div>
+				<div id="rightPanel" style="top:0px; right:70%; height:100%; width:30%; float:left;">
+	
+				</div>
+
+			</div>
+		</div>
+		
+		
+		<script src="map.js"></script>
+		<script src="map_modal.js"></script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5a82h77p6Z165CDKzdOUOogmghrM2jjE&callback=initializeMap">
+		</script>
+	</body>
+</html>
