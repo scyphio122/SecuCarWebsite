@@ -12,10 +12,15 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
+
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #c6c6c6;
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -38,10 +43,50 @@
     cursor: pointer;
 }
 
+table, tr, th, td
+{
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+
+td
+{
+	text-align: center;
+}
+
+table#trackTable th 
+{
+    color: white;
+    background-color: black;
+}
+
+table#trackTable tr:nth-child(even)
+{
+	color: black;
+    background-color: #bfbdbd;
+}
+
+table#trackTable tr:nth-child(odd)
+{
+	color: white;
+    background-color: #666363;
+}
+
+table#trackTable tr:hover
+{
+	color: white;
+	background: red;
+}
+
+#modalTrackId
+{
+	height:2%;
+	width: 100%;
+}
 /* Map div */
 #map
 {
-	height: 100%;
+	height: 95%;
 	width: 70%;
 	float: left;
 	border: 1px solid blue;
