@@ -20,7 +20,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #c6c6c6;
+    background-color: #e5e5e5;
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -86,8 +86,9 @@ table#trackTable tr:hover
 /* Map div */
 #map
 {
-	height: 95%;
+	height: 90%;
 	width: 70%;
 	float: left;
-	border: 1px solid blue;
+	border: 2px solid blue;
+	margin: 10px;
 }

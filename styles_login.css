@@ -15,8 +15,9 @@ form
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	width: 20%;
-	height:auto;
+	height:50%;
     border: 3px solid #f1f1f1;
+	box-shadow: 10px 10px 5px #888888;
 }
 
 form
@@ -26,9 +27,8 @@ form
 	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	width: 20%;
+	width: 90%;
 	height:auto;
-    border: 3px solid #f1f1f1;
 }
 
 /* Full-width inputs */
