@@ -1,6 +1,7 @@
 var userName;
 var loginButton;
 var loginForm;
+var idUser;
 
 window.onload = function()
 {
@@ -8,13 +9,12 @@ window.onload = function()
 	
 	loginForm.action = function()
 	{
-		onLoginSuccess("Konrad Traczyk");
+		submitLoginData();
 	}
 }
-function onLoginSuccess(_userName)
+function onLoginSuccess(userId)
 {
-	userName = _userName;
-	
+	idUser = userId;
 	window.location.href = "main_page.html";
 }
 
@@ -35,5 +35,17 @@ function onRegisterUser()
 
 function submitLoginData()
 {
-	var user = document.getElementById("")
+	var _user = document.getElementById("username");
+	var _pass = document.getElementById("password");
+	
+	$.post( "login", { username: _user, password: _pass}, function( data ) {
+		if (data.idUser == -1)
+		{
+			onLoginFail();
+		}
+		else
+		{
+			onLoginSuccess(data.idUser);
+		}
+	});
 }
