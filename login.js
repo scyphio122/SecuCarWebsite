@@ -6,11 +6,7 @@ var idUser;
 window.onload = function()
 {
 	loginForm = document.getElementById("loginForm");
-	
-	loginForm.action = function()
-	{
-		submitLoginData();
-	}
+	loginButton = document.getElementById("loginButton");
 }
 function onLoginSuccess(userId)
 {
@@ -35,17 +31,20 @@ function onRegisterUser()
 
 function submitLoginData()
 {
-	var _user = document.getElementById("username");
-	var _pass = document.getElementById("password");
-	
-	$.post( "login", { username: _user, password: _pass}, function( data ) {
-		if (data.idUser == -1)
-		{
-			onLoginFail();
-		}
-		else
-		{
-			onLoginSuccess(data.idUser);
-		}
-	});
+    //var _user = document.getElementById("username");
+    //var _pass = document.getElementById("password");
+    //httpGetAsync('/login?username='+_user+'&password='+_pass, onLoginFail());
+
+}
+
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
 }
