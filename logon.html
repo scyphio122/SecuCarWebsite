@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="JSON/json2.js"></script>
 		<script type="text/javascript" src="JSON/json_parse.js"></script>
 		<script type="text/javascript" src="JSON/json_parse_state.js"></script>
+		<script type="text/javascript" src="httpRequests.js"></script>
 	</head>
 
 	<body>
@@ -36,40 +37,16 @@
 			</form>
 
 			<script>
-					$( "#loginForm" ).submit(function( event ) {
-
+					$( "#loginForm" ).submit(function( event )
+					{
 					  // Stop form from submitting normally
 					  event.preventDefault();
-
 					  // Get some values from elements on the page:
 					  var $form = $( this ),
 					    _username = $form.find( "input[name='username']" ).val(),
 							_password = $form.find( "input[name='password']" ).val(),
 					    _url = $form.attr( "action" );
-						var _args = JSON.stringify({ username: _username, password: _password });
-						console.log("Args passed to POST request: " + _args);
-
-
-					  // Send the data using post
-						$.ajax({
-						  url: _url,
-						  type: "POST",
-						  dataType: "json", // expected format for response
-						  contentType: "application/json", // send as JSON
-						  data: _args ,
-
-						  complete: function() {
-						    //called when complete
-						  },
-
-						  success: function() {
-						    //called when successful
-						 },
-
-						  error: function() {
-						    //called when there is an error
-						  },
-						});
+						http_post(_url, {"username": _username, "password": _password}, onLoginSuccess);
 					});
 		</script>
 		</div>
