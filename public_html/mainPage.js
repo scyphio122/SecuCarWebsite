@@ -42,6 +42,30 @@ function addRowHandlers()
 	}
 }
 
+function addDeviceRow(params)
+{
+	var select = document.getElementById("devicesSelect");
+	var option = document.createElement("option");
+	if (params["deviceName"] == "")
+		option.text = "Device " + (select.options.length + 1) + "; Serial number: " + params["serialNumber"];
+	else {
+		option.text = "Device name: " + params["deviceName"] + "; Serial number: " + params["serialNumber"];
+	}
+	option.setAttribute("value", params["idDevice"]);
+	select.add(option);
+}
+
+function clearDevicesList()
+{
+	var select = document.getElementById("devicesSelect");
+	devicesList = {};
+
+	for (var i=0; i<select.options.length; i++)
+	{
+			select.remove(i);
+	}
+}
+
 function addTrackRow(index, params)
 {
 	var table = document.getElementById("trackTable");
@@ -101,29 +125,51 @@ function removeTrackRow(index)
 
 function clearTracksTable()
 {
-	$("#trackTable tr").remove();
+	$("#trackTable tr").not("#headerTr").remove();
 }
 
-function addDeviceRow(params)
+function addSampleRow(index, sample)
 {
-	var select = document.getElementById("devicesSelect");
-	var option = document.createElement("option");
-	if (params["deviceName"] == "")
-		option.text = "Device " + (select.options.length + 1) + "; Serial number: " + params["serialNumber"];
-	else {
-		option.text = "Device name: " + params["deviceName"] + "; Serial number: " + params["serialNumber"];
-	}
-	option.setAttribute("value", params["idDevice"]);
-	select.add(option);
-}
+	var table = document.getElementById("sampleTable");
+	var row = table.insertRow(-1);
+	var title = table.getElementsByTagName("th");
+	var cell;
+	var cellString = "";
 
-function clearDevicesList()
-{
-	var select = document.getElementById("devicesSelect");
-	devicesList = {};
+	var _latLng = sample["coordinates"].split(',');
+	var marker = addMarker(_latLng[0], _latLng[1]);
 
-	for (var i=0; i<select.options.length; i++)
+	cell = row.insertCell(0);
+	cell.innerHTML = marker.id;
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(1);
+	cell.innerHTML = params["timestamp"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(2);
+	cell.innerHTML = params["coordinates"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(3);
+	cell.innerHTML = params["speed"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(4);
+	cell.innerHTML = params["acceleration"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(5);
+	cell.innerHTML = params["azimuth"];
+	cellString += cell.innerHTML + "; ";
+
+	row.onclick = function()
 	{
-			select.remove(i);
-	}
+		var cell = this.getElementsByTagName("td")[0];
+		var index = cell.innerHTML - 1;
+
+		var marker = findMarkerById(index);
+
+		console.log("Sample number: " + trackId + " clicked");
+	};
 }

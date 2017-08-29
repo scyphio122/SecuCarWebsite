@@ -39,7 +39,7 @@ function getTrackList(_idDevice)
 
 function onReceivedTrackList(response)
 {
-  //clearTracksTable();
+  clearTracksTable();
   if (response["result"] == 1)
   {
     tracksList = response["tracks"];
@@ -47,6 +47,28 @@ function onReceivedTrackList(response)
     for (var i = 0; i < tracksList.length; i++)
     {
       addTrackRow(i, tracksList[i]);
+    }
+  }
+}
+
+function getSamplesList(_idTrack)
+{
+    console.log("Getting samples list for track: " + _idTrack);
+
+    http_get(URL + "get_track_details",
+            {"idTrack": _idTrack},
+            onReceivedTrackDetails);
+}
+
+function onReceivedTrackDetails(response)
+{
+  if (response["result"] == 1)
+  {
+    var sampleList = response["samples"];
+
+    for (var i = 0; i < sampleList.length; i++)
+    {
+      addSampleRow(i, sampleList[i]);
     }
   }
 }

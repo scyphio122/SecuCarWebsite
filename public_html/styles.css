@@ -20,7 +20,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #e5e5e5;
+    background-color: rgba(229, 229, 229, 0.9);
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -41,6 +41,11 @@
 	background: red;
     text-decoration: none;
     cursor: pointer;
+}
+
+#selectDeviceLabel
+{
+  -webkit-margin-after: 0em;
 }
 
 table, tr, th, td
@@ -83,12 +88,21 @@ table#trackTable tr:hover
 	height:2%;
 	width: 100%;
 }
+
 /* Map div */
 #map
 {
 	height: 90%;
-	width: 70%;
+	width: 65%;
 	float: left;
 	border: 2px solid blue;
 	margin: 10px;
+}
+
+#rightPanel
+{
+  height:90%;
+  width:30%;
+  float:left;
+  padding: 10px;
 }

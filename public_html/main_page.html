@@ -16,8 +16,8 @@
 	<body background="bg.jpg" style="background-size: 100% auto; background-repeat: no-repeat;">
 		<div id="mainPage" class="mainPage" style="margin-left:10%;">
 
-			<p style="margin-bottom=0%;">Select the device</p>
-			<select id="devicesSelect" style="margin-top:2%; width:auto;">
+			<p id="selectDeviceLabel">Select the device</p>
+			<select id="devicesSelect" style="width:auto;">
 			</select>
 
 			<script type="text/javascript">
@@ -30,14 +30,14 @@
 
 			<table id="trackTable" style="margin-top:1%; width:90%;">
 			<caption style="text-align:left;">Select the track:</caption>
-				<tr>
+				<tr id="headerTr">
 					<th>Track number</th>
 					<th>Track start date</th>
-					<th>Track start coordinations</th>
+					<th>Track start coordinates</th>
 					<th>Track end date</th>
-					<th>Track end coordinations</th>
-					<th>Track length</th>
-					<th>Driver assessment</th>
+					<th>Track end coordinates</th>
+					<th>Track length [km]</th>
+					<th>Driving assessment</th>
 				</tr>
 			</table>
 		</div>
@@ -48,8 +48,17 @@
 				<span class="close">&times;</span>
 				<h2 id="modalTrackId"><center>Track id: </center></h2>
 				<div id="map" class="map"></div>
-				<div id="rightPanel" style="top:0px; right:70%; height:100%; width:30%; float:left;">
-
+				<div id="rightPanel">
+						<!--<table id="sampleTable" style="margin-top:1%; width:90%;">
+								<caption style="text-align:left;">Samples:</caption>
+								<tr>
+									<th>Time</th>
+									<th>Coordinates</th>
+									<th>Speed [km/h]</th>
+									<th>Acceleration [m/s^2]</th>
+									<th>Azimuth</th>
+								</tr>
+						</table> -->
 				</div>
 			</div>
 		</div>
