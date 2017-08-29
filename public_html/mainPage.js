@@ -42,28 +42,48 @@ function addRowHandlers()
 	}
 }
 
-function addDeviceRow(params)
+function addDeviceRow(index, params)
 {
-	var select = document.getElementById("devicesSelect");
-	var option = document.createElement("option");
-	if (params["deviceName"] == "")
-		option.text = "Device " + (select.options.length + 1) + "; Serial number: " + params["serialNumber"];
-	else {
-		option.text = "Device name: " + params["deviceName"] + "; Serial number: " + params["serialNumber"];
-	}
-	option.setAttribute("value", params["idDevice"]);
-	select.add(option);
+	var table = document.getElementById("devicesTable");
+
+	var row = table.insertRow(-1);
+	var title = table.getElementsByTagName("th");
+	var cell;
+	var cellString = "";
+
+	cell = row.insertCell(0);
+	cell.innerHTML = index + 1;
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(1);
+	cell.innerHTML = params["deviceName"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(2);
+	cell.innerHTML = params["lastLocation"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(3);
+	cell.innerHTML = params["serialNumber"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(4);
+	cell.innerHTML = ((params["firmwareVersion"] >> 16) & 0xFF) + "." + ((params["firmwareVersion"] >> 8) & 0xFF) + "." + (params["firmwareVersion"] & 0xFF);
+	cellString += cell.innerHTML + "; ";
+
+	row.onclick = function()
+	{
+		var cell = this.getElementsByTagName("td")[0];
+		var index = cell.innerHTML - 1;
+		var deviceId = (devicesList[index])["idDevice"];
+		console.log("Row with deviceId: " + deviceId + " clicked");
+		getTrackList(deviceId);
+	};
 }
 
 function clearDevicesList()
 {
-	var select = document.getElementById("devicesSelect");
-	devicesList = {};
-
-	for (var i=0; i<select.options.length; i++)
-	{
-			select.remove(i);
-	}
+	$("#devicesTable tr").not("#headerTr").remove();
 }
 
 function addTrackRow(index, params)

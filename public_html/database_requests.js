@@ -23,7 +23,7 @@ function _onDevicesListReceived(response)
 
     for (var i = 0; i < devicesList.length; i++)
     {
-      addDeviceRow(devicesList[i]);
+      addDeviceRow(i, devicesList[i]);
     }
   }
 }

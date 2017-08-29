@@ -43,6 +43,22 @@
     cursor: pointer;
 }
 
+#mainPageLeftPanel
+{
+  float: left;
+  width: 30%;
+  height: 100%;
+  background-color: cyan;
+}
+
+#mainPageRightPanel
+{
+  float: left;
+  width: 70%;
+  height: 100%;
+  background-color: magenta;
+}
+
 #selectDeviceLabel
 {
   -webkit-margin-after: 0em;
@@ -50,6 +66,7 @@
 
 table, tr, th, td
 {
+  margin: auto;
 	border: 1px solid gray;
 	border-collapse: collapse;
 }
@@ -59,28 +76,28 @@ td
 	text-align: center;
 }
 
-table#trackTable th
+th
 {
-    color: white;
-    background-color: black;
+    color: #d3d3d3;
+    background-color: #565650;
 }
 
-table#trackTable tr:nth-child(even)
+table tr:nth-child(even)
 {
-	color: black;
-    background-color: #bfbdbd;
+    color: #d3d3d3;
+    background-color: #7a7a70;
 }
 
-table#trackTable tr:nth-child(odd)
+table tr:nth-child(odd)
+{
+    color: #d3d3d3;
+    background-color: #565650;
+}
+
+table tr:hover
 {
 	color: white;
-    background-color: #666363;
-}
-
-table#trackTable tr:hover
-{
-	color: white;
-	background: red;
+	background: #8e0e0e;
 }
 
 #modalTrackId
