@@ -51,7 +51,7 @@
 					    _username = $form.find( "input[name='username']" ).val(),
 							_password = $form.find( "input[name='password']" ).val(),
 					    _url = $form.attr( "action" );
-						http_post(_url, {"username": _username, "password": _password}, onLoginSuccess);
+						http_post(_url, {"username": _username, "password": _password}, onLoginResponse);
 					});
 				</script>
 		</div>
@@ -62,7 +62,7 @@
 				<span id="registrationModalClose" class="close">&times;</span>
 				<h3 id="RegisterUserId"><center>Register User</center></h3>
 
-				<form id="registrationForm" action="http://localhost:9090/secucar/register_user">
+				<form id="registrationForm" action="http://localhost:9090/secucar/register">
 						<label><b>Username</b></label>
 						<input id="username" class="registrationInput" type="text" placeholder="Enter Username" name="username" required>
 
@@ -129,7 +129,6 @@
 					if (_password != _repeatPassword)
 					{
 						alert("Passwords do not match, try again");
-						document.getElementById("registrationForm").reset();
 						return;
 					}
 

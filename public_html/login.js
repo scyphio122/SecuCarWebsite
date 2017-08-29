@@ -28,15 +28,18 @@ window.onload = function()
 	document.getElementById("registerUserButton").onclick = openRegistrationModal;
 
 }
-function onLoginSuccess(userId)
-{
-	idUser = userId;
-	window.location.href = "main_page.html";
-}
 
-function onLoginFail()
+function onLoginResponse(response)
 {
-	window.location.href = "logon.html";
+	if (response["idUser"] < 0)
+	{
+			alert("Login failed.");
+			window.location.href = "logon.html";
+			return;
+	}
+
+	idUser = response["idUser"];
+	window.location.href = "main_page.html";
 }
 
 function onForgotPasswd()
@@ -65,6 +68,11 @@ function openRegistrationModal()
 	// Display the modal window
 	registrationModal.style.display = "block";
 }
+
+function closeRegistrationModal()
+{
+	// Display the modal window
+	registrationModal.style.display = "none";}
 
 // Close the modal when user clicks outside of it
 window.onclick = function()

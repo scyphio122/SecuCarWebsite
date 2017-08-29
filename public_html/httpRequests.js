@@ -15,9 +15,8 @@ function http_post(_url, _arguments, _successCallback)
       //called when complete
     },
     success: function(msg) {
-      var json = JSON.parse(msg.getResponse());
-      console.log("Returning JSON is: " + json)
-      _successCallback(json);
+      console.log("Response JSON is: " + msg)
+      _successCallback(msg);
     },
     error: errorCallback,
     });
