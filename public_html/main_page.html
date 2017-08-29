@@ -2,19 +2,32 @@
 <html lang="pl">
 	<head>
 		<title>SecuCar</title>
-		<!*-- Include stylesheet -->
+		<!-- Include stylesheet -->
 		<link rel="stylesheet" href="styles.css">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="jquery-3.2.1.js"></script>
+		<script src="login.js"></script>
+		<script src="mainPage.js"></script>
+		<script src="httpRequests.js"></script>
+		<script src="database_requests.js"></script>
 	</head>
 
-	<body background="bg.jpg" style="background-size: 100% auto; background-repeat: no-repeat;">	
+	<body background="bg.jpg" style="background-size: 100% auto; background-repeat: no-repeat;">
 		<div id="mainPage" class="mainPage" style="margin-left:10%;">
-		
+
 			<p style="margin-bottom=0%;">Select the device</p>
-			<select style="margin-top:2%; width:15%;">
-				<option>Select the device</option>
+			<select id="devicesSelect" style="margin-top:2%; width:auto;">
 			</select>
-			
+
+			<script type="text/javascript">
+				$('select').on('change', function() {
+					console.log("Select changed");
+					var idDevice = devicesList[$("#devicesSelect")[0].selectedIndex]["idDevice"];
+					getTrackList(idDevice);
+				})
+			</script>
+
 			<table id="trackTable" style="margin-top:1%; width:90%;">
 			<caption style="text-align:left;">Select the track:</caption>
 				<tr>
@@ -24,44 +37,29 @@
 					<th>Track end date</th>
 					<th>Track end coordinations</th>
 					<th>Track length</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>2017-07-30</td>
-					<td>0</td>
-					<td>2017-07-30</td>
-					<td>0</td>
-					<td>0</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>2017-07-30</td>
-					<td>0</td>
-					<td>2017-07-30</td>
-					<td>0</td>
-					<td>0</td>
+					<th>Driver assessment</th>
 				</tr>
 			</table>
 		</div>
-		
+
 		<div id="modal_map" class="modal">
-			
+
 			<div id="modal_map_content" class="modal-content">
 				<span class="close">&times;</span>
 				<h2 id="modalTrackId"><center>Track id: </center></h2>
 				<div id="map" class="map"></div>
 				<div id="rightPanel" style="top:0px; right:70%; height:100%; width:30%; float:left;">
-	
+
 				</div>
 			</div>
 		</div>
-		
+
 
 		<script src="map.js"></script>
 		<script src="map_modal.js"></script>
-		<script src="mainPage.js"></script>
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5a82h77p6Z165CDKzdOUOogmghrM2jjE&callback=initializeMap">
 		</script>
+
 	</body>
 </html>

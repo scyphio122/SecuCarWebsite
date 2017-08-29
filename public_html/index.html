@@ -44,14 +44,15 @@
 				<script>
 					$( "#loginForm" ).submit(function( event )
 					{
-					  // Stop form from submitting normally
-					  event.preventDefault();
-					  // Get some values from elements on the page:
-					  var $form = $( this ),
-					    _username = $form.find( "input[name='username']" ).val(),
+						// Stop form from submitting normally
+						event.preventDefault();
+						// Get some values from elements on the page:
+						var $form = $( this ),
+							_username = $form.find( "input[name='username']" ).val(),
 							_password = $form.find( "input[name='password']" ).val(),
-					    _url = $form.attr( "action" );
-						http_post(_url, {"username": _username, "password": _password}, onLoginResponse);
+							_url = $form.attr( "action" );
+
+						login(_url, _username, _password);
 					});
 				</script>
 		</div>
@@ -126,51 +127,18 @@
 						_repeatPassword = $form.find( "input[name='repeatPassword']" ).val(),
 						_url = $form.attr( "action" );
 
-					if (_password != _repeatPassword)
-					{
-						alert("Passwords do not match, try again");
-						return;
-					}
-
-					http_post(_url, {	"username": _username,
-														"name": _name,
-														"surname": _surname,
-														"email": _email,
-														"telephone": _telephone,
-														"city": _city,
-														"street": _street,
-														"homeNumber": _homeNumber,
-														"flatNumber": _flatNumber,
-														"postalCode": _postalCode,
-														"password": _password},
-														function(msg){
-															var _result = msg[0];
-															// If registration did not succeed
-															if (_result == 0)
-															{
-																alert("Provided username already exists on the server. Try again");
-																document.getElementById("registrationForm").reset();
-																return;
-															}
-															else
-															{
-																http_post("http://localhost:9090/secucar/login",
-																					{"username": _username, "password": _password},
-																					function(msg){
-																						if (msg['idUser'] != -1)
-																						{
-																							idUser = msg['idUser'];
-																							username = _username;
-																							window.location.href = "main_page.html";
-																						}
-																						else {
-																							// In case of an error, go back to the login site
-																							window.location.href = "index.html";
-																						}
-																					})
-															}
-														}
-									);
+						RegisterUser(	_username,
+													_name,
+													_surname,
+													_email,
+													_telephone,
+													_city,
+													_street,
+													_homeNumber,
+													_flatNumber,
+													_postalCode,
+													_password,
+													_repeatPassword);
 				});
 			</script>
 		</div>

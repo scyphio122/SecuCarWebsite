@@ -1,4 +1,5 @@
-var userName;
+var username;
+var password;
 var loginButton;
 var loginForm;
 var idUser;
@@ -26,7 +27,11 @@ window.onload = function()
 	}
 
 	document.getElementById("registerUserButton").onclick = openRegistrationModal;
+}
 
+function login(_url, _username, _password)
+{
+	http_post(_url, {"username": _username, "password": _password}, onLoginResponse);
 }
 
 function onLoginResponse(response)
@@ -34,11 +39,14 @@ function onLoginResponse(response)
 	if (response["idUser"] < 0)
 	{
 			alert("Login failed.");
-			window.location.href = "logon.html";
+			window.location.href = "index.html";
 			return;
 	}
 
 	idUser = response["idUser"];
+	localStorage.setItem("idUser", idUser);
+	localStorage.setItem("username", username);
+
 	window.location.href = "main_page.html";
 }
 
@@ -47,9 +55,59 @@ function onForgotPasswd()
 
 }
 
-function onRegisterUser()
+function RegisterUser(_username,
+											_name,
+											_surname,
+											_email,
+											_telephone,
+											_city,
+											_street,
+											_homeNumber,
+											_flatNumber,
+											_postalCode,
+											_password,
+											_repeatPassword)
 {
+	if (_password != _repeatPassword)
+	{
+		alert("Passwords do not match, try again");
+		return;
+	}
 
+	username = _username;
+	password = _password;
+
+	http_post("http://localhost:9090/secucar/register",
+		 				{	"username": _username,
+							"name": _name,
+							"surname": _surname,
+							"email": _email,
+							"telephone": _telephone,
+							"city": _city,
+							"street": _street,
+							"homeNumber": _homeNumber,
+							"flatNumber": _flatNumber,
+							"postalCode": _postalCode,
+							"password": _password
+						},
+						onRegisterUserResponse
+					);
+}
+
+function onRegisterUserResponse(response)
+{
+	var _result = response["result"];
+	// If registration did not succeed
+	if (_result == 0)
+	{
+		alert("Provided username already exists on the server. Try again");
+		document.getElementById("registrationForm").reset();
+		return;
+	}
+	else
+	{
+		login("http://localhost:9090/secucar/login", username, password);
+	}
 }
 
 function submitLoginData()
