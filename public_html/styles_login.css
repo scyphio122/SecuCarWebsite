@@ -1,5 +1,5 @@
-/* Bordered form 
-form 
+/* Bordered form
+form
 {
 	display: inline-block;
 	margin: 0 auto;
@@ -15,7 +15,7 @@ form
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	width: 20%;
-	height:50%;
+	height:60%;
     border: 3px solid #f1f1f1;
 	box-shadow: 10px 10px 5px #888888;
 }
@@ -57,9 +57,15 @@ button:hover {
     opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
-.cancelbtn {
+/* Extra style for the register user button (red) */
+.registerUserButton {
     width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.cancelbtn {
+    width: 100%;
     padding: 10px 18px;
     background-color: #f44336;
 }
@@ -87,13 +93,73 @@ span.psw {
     padding-top: 16px;
 }
 
+/* The Modal (background) */
+.registration_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0px;
+    top: 0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.5); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+#registation_modal_content {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e5e5e5;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+		height: auto;
+}
+
+#registrationForm
+{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height:70%;
+}
+
+.registrationInput
+{
+	background-color: #f2f2f2;
+}
+
+/* The Close Button */
+.close {
+    color: #ef1509;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+		margin-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+	background: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
         display: block;
         float: none;
     }
-    .cancelbtn {
+    .registerUserButton {
         width: 100%;
     }
 }

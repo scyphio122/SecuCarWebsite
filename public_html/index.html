@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html labg="en">
 	<head>
+		<!-- Include stylesheet -->
 		<link rel="stylesheet" href="styles_login.css">
+		<link rel="stylesheet" href="styles.css">
+
 		<script src="login.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="JSON/json2.js"></script>
@@ -13,6 +16,8 @@
 	</head>
 
 	<body>
+
+		<!--	LOGIN FORM  -->
 		<div id="formDiv">
 			<form id="loginForm" action="http://localhost:9090/secucar/login">
 			  <div class="imgcontainer">
@@ -20,78 +25,23 @@
 			  </div>
 
 			  <div class="container">
-				<label><b>Username</b></label>
-				<input id="username" type="text" placeholder="Enter Username" name="username" required>
+					<label><b>Username</b></label>
+					<input id="username" type="text" placeholder="Enter Username" name="username" required>
 
-				<label><b>Password</b></label>
-				<input id="password" type="password" placeholder="Enter Password" name="password" required>
+					<label><b>Password</b></label>
+					<input id="password" type="password" placeholder="Enter Password" name="password" required>
 
-				<button id="loginButton" type="submit">Login</button>
-				<input type="checkbox" checked="checked"> Remember me
+					<button id="loginButton" type="submit">Login</button>
+
+					<input type="checkbox" checked="checked"> Remember me
 			  </div>
 
 			  <div class="container" style="background-color:#f1f1f1">
-				<button type="button" class="cancelbtn">Cancel</button>
-				<span class="psw">Forgot <a href="#">password?</a></span>
+					<button id="registerUserButton" type="button" class="registerUserButton">Register User</button>
+					<span class="psw">Forgot <a href="#">password?</a></span>
 			  </div>
 			</form>
-
-			<!--	REGISTRATION FORM MODAL	 -->
-			<div id="registration_modal" class="modal">
-				<div id="registration_modal_content" class="modal-content">
-					<span class="close">&times;</span>
-					<h2 id="RegisterUserId"><center>Register </center></h2>
-
-					<form id="registrationForm" action="http://localhost:9090/secucar/register_user">
-						<div class="container">
-							<label><b>Username</b></label>
-							<input id="username" type="text" placeholder="Enter Username" name="username" required>
-
-							<label><b>Name</b></label>
-							<input id="name" type="text" placeholder="Enter Name" name="name" required>
-
-							<label><b>Surname</b></label>
-							<input id="surname" type="text" placeholder="Enter Surname" name="surname" required>
-
-							<label><b>Email</b></label>
-							<input id="email" type="text" placeholder="Enter Email" name="email" required>
-
-							<label><b>Telephone Number</b></label>
-							<input id="telephone" type="text" placeholder="Enter Telephone number" name="telephone" required>
-
-							<label><b>City</b></label>
-							<input id="city" type="text" placeholder="Enter City" name="city">
-
-							<label><b>Street</b></label>
-							<input id="street" type="text" placeholder="Enter Street" name="street">
-
-							<label><b>Home number</b></label>
-							<input id="homeNumber" type="text" placeholder="Enter Home Number" name="homeNumber">
-
-							<label><b>Flat number</b></label>
-							<input id="flatNumber" type="text" placeholder="Enter Flat Number" name="flatNumber">
-
-							<label><b>Postal code</b></label>
-							<input id="postalCode" type="text" placeholder="Enter Postal Code" name="postalCode">
-
-							<label><b>Password</b></label>
-							<input id="password" type="password" placeholder="Enter Password" name="password" required>
-
-							<label><b>Repeat Password</b></label>
-							<input id="repeatPassword" type="password" placeholder="Repeat Password" name="repeatPassword" required>
-
-							<button id="registerUserButton" type="submit">Register User</button>
-						</div>
-
-						<div class="container" style="background-color:#f1f1f1">
-							<button type="button" class="cancelbtn">Cancel</button>
-						</div>
-
-					</form>
-				</div>
-			</div>
-
-			<script>
+				<script>
 					$( "#loginForm" ).submit(function( event )
 					{
 					  // Stop form from submitting normally
@@ -103,75 +53,127 @@
 					    _url = $form.attr( "action" );
 						http_post(_url, {"username": _username, "password": _password}, onLoginSuccess);
 					});
+				</script>
+		</div>
 
-					$( "#registrationForm" ).submit(function( event )
+		<!--	REGISTRATION FORM MODAL	 -->
+		<div id="registration_modal" class="registration_modal">
+			<div id="registration_modal_content" class="registration_modal_content">
+				<span id="registrationModalClose" class="close">&times;</span>
+				<h3 id="RegisterUserId"><center>Register User</center></h3>
+
+				<form id="registrationForm" action="http://localhost:9090/secucar/register_user">
+						<label><b>Username</b></label>
+						<input id="username" class="registrationInput" type="text" placeholder="Enter Username" name="username" required>
+
+						<label><b>Name</b></label>
+						<input id="name" class="registrationInput" type="text" placeholder="Enter Name" name="name" required>
+
+						<label><b>Surname</b></label>
+						<input id="surname" class="registrationInput" type="text" placeholder="Enter Surname" name="surname" required>
+
+						<label><b>Email</b></label>
+						<input id="email" class="registrationInput" type="text" placeholder="Enter Email" name="email" required>
+
+						<label><b>Telephone Number</b></label>
+						<input id="telephone" class="registrationInput" type="text" placeholder="Enter Telephone number" name="telephone" required>
+
+						<label><b>City</b></label>
+						<input id="city" class="registrationInput" type="text" placeholder="Enter City" name="city">
+
+						<label><b>Street</b></label>
+						<input id="street" class="registrationInput" type="text" placeholder="Enter Street" name="street">
+
+						<label><b>Home number</b></label>
+						<input id="homeNumber" class="registrationInput" type="text" placeholder="Enter Home Number" name="homeNumber">
+
+						<label><b>Flat number</b></label>
+						<input id="flatNumber" class="registrationInput" type="text" placeholder="Enter Flat Number" name="flatNumber">
+
+						<label><b>Postal code</b></label>
+						<input id="postalCode" class="registrationInput" type="text" placeholder="Enter Postal Code" name="postalCode">
+
+						<label><b>Password</b></label>
+						<input id="password" class="registrationInput" type="password" placeholder="Enter Password" name="password" required>
+
+						<label><b>Repeat Password</b></label>
+						<input id="repeatPassword" class="registrationInput" type="password" placeholder="Repeat Password" name="repeatPassword" required>
+
+						<button id="registerUserButton" type="submit">Register User</button>
+
+						<button id="closeRegistrationButton" type="button" class="cancelbtn">Cancel</button>
+
+				</form>
+			</div>
+			<script>
+				$( "#registrationForm" ).submit(function( event )
+				{
+					// Stop form from submitting normally
+					event.preventDefault();
+					// Get some values from elements on the page:
+					var $form = $( this ),
+						_username = $form.find( "input[name='username']" ).val(),
+						_name = $form.find( "input[name='name']" ).val(),
+						_surname = $form.find( "input[name='surname']" ).val(),
+						_email = $form.find( "input[name='email']" ).val(),
+						_telephone = $form.find( "input[name='telephone']" ).val(),
+						_city = $form.find( "input[name='city']" ).val(),
+						_street = $form.find( "input[name='street']" ).val(),
+						_homeNumber = $form.find( "input[name='homeNumber']" ).val(),
+						_flatNumber = $form.find( "input[name='flatNumber']" ).val(),
+						_postalCode = $form.find( "input[name='postalCode']" ).val(),
+						_password = $form.find( "input[name='password']" ).val(),
+						_repeatPassword = $form.find( "input[name='repeatPassword']" ).val(),
+						_url = $form.attr( "action" );
+
+					if (_password != _repeatPassword)
 					{
-						// Stop form from submitting normally
-						event.preventDefault();
-						// Get some values from elements on the page:
-						var $form = $( this ),
-							_username = $form.find( "input[name='username']" ).val(),
-							_name = $form.find( "input[name='name']" ).val(),
-							_surname = $form.find( "input[name='surname']" ).val(),
-							_email = $form.find( "input[name='email']" ).val(),
-							_telephone = $form.find( "input[name='telephone']" ).val(),
-							_city = $form.find( "input[name='city']" ).val(),
-							_street = $form.find( "input[name='street']" ).val(),
-							_homeNumber = $form.find( "input[name='homeNumber']" ).val(),
-							_flatNumber = $form.find( "input[name='flatNumber']" ).val(),
-							_postalCode = $form.find( "input[name='postalCode']" ).val(),
-							_password = $form.find( "input[name='password']" ).val(),
-							_repeatPassword = $form.find( "input[name='repeatPassword']" ).val(),
-							_url = $form.attr( "action" );
+						alert("Passwords do not match, try again");
+						document.getElementById("registrationForm").reset();
+						return;
+					}
 
-						if (_password != _repeatPassword)
-						{
-							alert("Passwords do not match, try again");
-							document.getElementById("registrationForm").reset();
-							return;
-						}
-
-						http_post(_url, {	"username": _username,
-															"name": _name,
-															"surname": _surname,
-															"email": _email,
-															"telephone": _telephone,
-															"city": _city,
-															"street": _street,
-															"homeNumber": _homeNumber,
-															"flatNumber": _flatNumber,
-															"postalCode": _postalCode,
-						 									"password": _password},
-															function(msg){
-																var _result = msg[0];
-																// If registration did not succeed
-																if (_result == 0)
-																{
-																	alert("Provided username already exists on the server. Try again");
-																	document.getElementById("registrationForm").reset();
-																	return;
-																}
-																else
-																{
-																	http_post("http://localhost:9090/secucar/login",
-																						{"username": _username, "password": _password},
-																						function(msg){
-																							if (msg['idUser'] != -1)
-																							{
-																								idUser = msg['idUser'];
-																								window.location.href = "main_page.html";
-																							}
-																							else {
-																								// In case of an error, go back to the login site
-																								window.location.href = "index.html";
-																							}
-																						})
-																}
-
+					http_post(_url, {	"username": _username,
+														"name": _name,
+														"surname": _surname,
+														"email": _email,
+														"telephone": _telephone,
+														"city": _city,
+														"street": _street,
+														"homeNumber": _homeNumber,
+														"flatNumber": _flatNumber,
+														"postalCode": _postalCode,
+														"password": _password},
+														function(msg){
+															var _result = msg[0];
+															// If registration did not succeed
+															if (_result == 0)
+															{
+																alert("Provided username already exists on the server. Try again");
+																document.getElementById("registrationForm").reset();
+																return;
 															}
-														);
-					});
-		</script>
+															else
+															{
+																http_post("http://localhost:9090/secucar/login",
+																					{"username": _username, "password": _password},
+																					function(msg){
+																						if (msg['idUser'] != -1)
+																						{
+																							idUser = msg['idUser'];
+																							username = _username;
+																							window.location.href = "main_page.html";
+																						}
+																						else {
+																							// In case of an error, go back to the login site
+																							window.location.href = "index.html";
+																						}
+																					})
+															}
+														}
+									);
+				});
+			</script>
 		</div>
 	</body>
 </html>
