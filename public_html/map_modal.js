@@ -7,7 +7,7 @@ var closeButton = document.getElementsByClassName("close")[0];
 function openMapModal(trackId)
 {
 	// TODO: Here get the details about the track via HTTP request and fill the markers array
-
+	getSamplesList(trackId);
 	// Display the modal window
 	modal_map.style.display = "block";
 	var currentCenter = map.getCenter();  // Get current center before resizing

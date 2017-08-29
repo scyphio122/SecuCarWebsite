@@ -96,8 +96,8 @@ table tr:nth-child(odd)
 
 table tr:hover
 {
-	color: white;
-	background: #8e0e0e;
+	color: #70e2ff;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 #modalTrackId

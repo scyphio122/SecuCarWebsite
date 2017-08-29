@@ -57,10 +57,11 @@ function addDeviceRow(index, params)
 
 	cell = row.insertCell(1);
 	cell.innerHTML = params["deviceName"];
+	cell.setAttribute("contenteditable", "true");
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
-	cell.innerHTML = params["lastLocation"];
+	cell.innerHTML = params["currentLocation"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
@@ -128,6 +129,8 @@ function addTrackRow(index, params)
 		var index = cell.innerHTML - 1;
 		var trackId = (tracksList[index])["idTrack"];
 		console.log("Row with trackId: " + trackId + " clicked");
+
+		clearSamplesTable();
 		// Open Map modal
 		openMapModal(trackId);
 	};
@@ -156,7 +159,7 @@ function addSampleRow(index, sample)
 	var cell;
 	var cellString = "";
 
-	var _latLng = sample["coordinates"].split(',');
+	var _latLng = sample["coordinates"].split(';');
 	var marker = addMarker(_latLng[0], _latLng[1]);
 
 	cell = row.insertCell(0);
@@ -164,23 +167,23 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(1);
-	cell.innerHTML = params["timestamp"];
+	cell.innerHTML = sample["timestamp"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
-	cell.innerHTML = params["coordinates"];
+	cell.innerHTML = sample["coordinates"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
-	cell.innerHTML = params["speed"];
+	cell.innerHTML = sample["speed"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
-	cell.innerHTML = params["acceleration"];
+	cell.innerHTML = sample["acceleration"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
-	cell.innerHTML = params["azimuth"];
+	cell.innerHTML = sample["azimuth"];
 	cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()
@@ -190,6 +193,12 @@ function addSampleRow(index, sample)
 
 		var marker = findMarkerById(index);
 
-		console.log("Sample number: " + trackId + " clicked");
+		console.log("Sample number: " + index + " clicked");
 	};
+}
+
+function clearSamplesTable()
+{
+		markerUniqueId = 0;
+		$("#trackTable tr").not("#headerTr").remove();
 }
