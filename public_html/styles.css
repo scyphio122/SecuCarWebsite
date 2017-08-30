@@ -1,3 +1,7 @@
+html,body {
+    height:100%;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -20,7 +24,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(229, 229, 229, 0.9);
+    background-color: #3a3c3f;/*rgba(229, 229, 229, 0.9);*/
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -42,13 +46,38 @@
     text-decoration: none;
     cursor: pointer;
 }
+#mainPage{
+  float: left;
+  width: 100%;
+  height: 100%;
+}
 
 #mainPageLeftPanel
 {
   float: left;
-  width: 30%;
+  width: 25%;
   height: 100%;
-  background-color: cyan;
+  padding-left: 1%;
+}
+
+#verticalLineDiv
+{
+  float: left;
+  width: 3%;
+  height: 99%;
+}
+
+.verticalLine
+{
+  float: left;
+  width: 2px;
+  height: 100%;
+}
+
+hr.vertical
+{
+   width: 0px;
+   height: 100%; /* or height in PX */
 }
 
 #mainPageRightPanel
@@ -56,7 +85,6 @@
   float: left;
   width: 70%;
   height: 100%;
-  background-color: magenta;
 }
 
 #selectDeviceLabel
@@ -69,6 +97,13 @@ table, tr, th, td
   margin: auto;
 	border: 1px solid gray;
 	border-collapse: collapse;
+}
+
+.tableCaption
+{
+  color: #14ebff;
+  padding-bottom: 10px;
+  font-size: 20px;
 }
 
 td

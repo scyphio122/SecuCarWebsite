@@ -126,6 +126,8 @@ function addTrackRow(index, params)
 	{
 		var cell = this.getElementsByTagName("td")[0];
 		var index = cell.innerHTML - 1;
+		document.getElementById("modalTrackId").innerHTML = "Track Number: " + (index + 1);
+
 		var trackId = (tracksList[index])["idTrack"];
 		console.log("Row with trackId: " + trackId + " clicked");
 
