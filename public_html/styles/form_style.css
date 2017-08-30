@@ -1,0 +1,77 @@
+.formDiv
+{
+
+}
+
+form
+{
+
+}
+
+.lineDiv
+{
+  width: 100%;
+  text-align: center;
+}
+
+label.formTextLabel
+{
+  padding-bottom: 10px;
+  font-size: 15px;
+  color: #14ebff;
+}
+
+input.formTextInput
+{
+  display: table-cell;
+  color: #d3d3d3;
+  background-color: #565650;
+  margin-bottom: 5%;
+  width: 60%;
+}
+
+.submitButton {
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 5px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+}
+
+.submitButton:hover {background-color: #3e8e41}
+
+.submitButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.cancelButton {
+  display: inline-block;
+  padding: 5px 20px;
+  margin: 0 auto; // auto left/right margins
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #e50000;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancelButton:hover {background-color:#a30000;
+
+.cancelButton:active {
+  background-color: #a30000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

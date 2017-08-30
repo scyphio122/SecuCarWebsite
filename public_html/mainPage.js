@@ -10,6 +10,22 @@ window.onload = function()
 	getDevicesList(idUser);
 	//
 	initializeTrackTable();
+
+	document.getElementById("addDeviceButton").onclick = function()
+	{
+			document.getElementById("modal_add_device").style.display = "block";
+	}
+
+	// Close modal when user clics 'X' button
+	document.getElementById("addDeviceCloseButton").onclick = function()
+	{
+			document.getElementById("modal_add_device").style.display = "none";
+	}
+
+	document.getElementById("cancelDeviceRegistrationButton").onclick = function()
+	{
+		document.getElementById("modal_add_device").style.display = "none";
+	}
 }
 
 
@@ -56,7 +72,6 @@ function addDeviceRow(index, params)
 
 	cell = row.insertCell(1);
 	cell.innerHTML = params["deviceName"];
-	cell.setAttribute("contenteditable", "true");
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
@@ -70,6 +85,40 @@ function addDeviceRow(index, params)
 	cell = row.insertCell(4);
 	cell.innerHTML = ((params["firmwareVersion"] >> 16) & 0xFF) + "." + ((params["firmwareVersion"] >> 8) & 0xFF) + "." + (params["firmwareVersion"] & 0xFF);
 	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(5);
+	var btn = document.createElement('input');
+	btn.type = "image";
+	btn.className = "btn";
+	btn.value = "Edit";
+	btn.name = index;
+	btn.src = "Icons/edit2.png";
+	btn.style.paddingTop = "5px";
+	btn.style.marginRight = "5px";
+	btn.style.marginLeft  = "5px";
+	btn.style.width = "25px";
+	btn.style.height = "25px";
+	btn.style.display = "inline";
+	btn.onclick = function() {
+				editDevice(parseInt(btn.name));
+	};
+	cell.appendChild(btn);
+
+	btn = document.createElement('input');
+	btn.type = "image";
+	btn.className = "btn";
+	btn.value = "Delete";
+	btn.name = index;
+	btn.src = "Icons/delete.png";
+	btn.style.width = "17px";
+	btn.style.height = "17px";
+	btn.style.marginRight = "5px";
+	btn.style.display = "inline";
+	btn.onclick = function() {
+		deleteDevice(parseInt(btn.name));
+	};
+	cell.appendChild(btn);
+
 
 	row.onclick = function()
 	{

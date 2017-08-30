@@ -3,6 +3,36 @@ var URL = "http://localhost:9090/secucar/"
 var devicesList;
 var tracksList;
 
+function addNewDevice(_deviceName, _serialNumber)
+{
+  if (idUser == -1)
+  {
+    alert("User not logged in!");
+    return;
+  }
+
+  if (_deviceName == "")
+  {
+    _deviceName = "device" + (devicesList.length + 1);
+  }
+
+  http_get(URL + "add_device",
+           {"idUser": idUser,
+            "deviceName": _deviceName,
+            "serialNumber": _serialNumber,
+            "currentLocation": "",
+            "firmwareVersion": "0"},
+             function(response){
+               if (response["result"] == 1)
+               {
+                 getDevicesList(idUser);
+               }
+               else {
+                 alert("Could not add new device");
+               }
+             });
+}
+
 function getDevicesList(_idUser)
 {
   if (_idUser < 0)
@@ -26,6 +56,44 @@ function _onDevicesListReceived(response)
       addDeviceRow(i, devicesList[i]);
     }
   }
+}
+
+function editDevice(indexOfDevice)
+{
+  var idDevice = devicesList[indexOfDevice]["idDevice"];
+  console.log("Changing device name of idDevice: " + idDevice);
+  var devName = prompt("Please enter new device name", "NewDevice");
+
+  http_get(URL + "change_device_name",
+          {"idDevice": idDevice,
+           "deviceName": devName},
+           function(response){
+             if (response["result"] == 1)
+             {
+               getDevicesList(idUser);;
+             }
+             else {
+               alert("Error during changing the device name");
+             }
+           })
+}
+
+function deleteDevice(indexOfDevice)
+{
+  var idDevice = devicesList[indexOfDevice]["idDevice"];
+  console.log("Deleting device id: " + idDevice);
+
+  http_get(URL + "delete_device",
+          {"idDevice": idDevice},
+          function(response){
+            if (response["result"] == 1)
+            {
+              getDevicesList(idUser);
+            }
+            else {
+              alert("Could not delete device.");
+            }
+          })
 }
 
 function getTrackList(_idDevice)

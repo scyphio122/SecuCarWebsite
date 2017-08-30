@@ -4,6 +4,8 @@
 		<title>SecuCar</title>
 		<!-- Include stylesheet -->
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles/newDeviceModal.css">
+		<link rel="stylesheet" href="styles/form_style.css">
 		<link href="https://fonts.googleapis.com/css?family=Rambla" rel="stylesheet">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,30 +26,35 @@
 
 			<div id="dataDiv">
 				<div id="mainPageLeftPanel">
+					<div id="tableDiv" style="width: 100%; height: 88%;">
+							<table id="devicesTable">
+							<caption id="selectDeviceLabel" class="tableCaption">Select the device:</caption>
+								<tr id="headerTr">
+										<th>Device number</th>
+										<th>Device Name</th>
+										<th>Last known location</th>
+										<th>Serial Number</th>
+										<th>Firmware Version</th>
+								</tr>
+							</table>
 
-					<table id="devicesTable">
-					<caption id="selectDeviceLabel" class="tableCaption">Select the device:</caption>
-						<tr id="headerTr">
-								<th>Device number</th>
-								<th>Device Name</th>
-								<th>Last known location</th>
-								<th>Serial Number</th>
-								<th>Firmware Version</th>
-						</tr>
-					</table>
+							<script type="text/javascript">
+								$('select').on('change', function() {
+									console.log("Select changed");
+									var idDevice = devicesList[$("#devicesSelect")[0].selectedIndex]["idDevice"];
+									getTrackList(idDevice);
+								})
+							</script>
+					</div>
 
-					<script type="text/javascript">
-						$('select').on('change', function() {
-							console.log("Select changed");
-							var idDevice = devicesList[$("#devicesSelect")[0].selectedIndex]["idDevice"];
-							getTrackList(idDevice);
-						})
-					</script>
+					<div id="addNewDeviceDiv" style="postion: absolute; botton: 12%;">
+						<input id="addDeviceButton" type="image" value="AddDevice" src="Icons/add2.png" style="width: 10%; height: 10%; margin-left: 85%;">
+					</div>
 				</div>
 
-				<div id="verticalLineDiv">
+				<!--<div id="verticalLineDiv">
 						<hr class="verticalLine">
-				</div>
+				</div> -->
 
 				<div id="mainPageRightPanel">
 					<table id="trackTable" style="width:90%;">
@@ -65,6 +72,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="modal_map" class="modal">
 
 			<div id="modal_map_content" class="modal-content">
@@ -87,6 +95,35 @@
 			</div>
 		</div>
 
+		<div id="modal_add_device" class="modal">
+				<span id="addDeviceCloseButton" class="close">&times;</span>
+				<center><h2 id="addDeviceLabel" class="tableCaption">Add Device</h2></center>
+				<div id="newDeviceFormDiv">
+					<form id="addNewDeviceForm">
+							<div class="lineDiv"><label class="formTextLabel">Device Name</label></div>
+							<div class="lineDiv"><input id="deviceNameInput" class="formTextInput" type="text" placeholder="Enter Device Name (optional)" name="devName" ></div>
+
+							<div class="lineDiv"><label class="formTextLabel">Serial Number</label></div>
+							<div class="lineDiv"><input id="deviceSerialNumberInput" class="formTextInput" type="text" placeholder="Enter Serial Number" name="serialNumber" required></div>
+
+						<div class="lineDiv"><button id="newDeviceSubmitButton" class="submitButton" type="submit">Submit</button></div>
+						<div class="lineDiv"><button id="cancelDeviceRegistrationButton" class="cancelButton" type="button" class="cancelbtn">Cancel</button></div>
+					</form>
+				</div>
+		</div>
+		<script>
+			$( "#addNewDeviceForm" ).submit(function( event )
+			{
+				// Stop form from submitting normally
+				event.preventDefault();
+				// Get some values from elements on the page:
+				var $form = $( this ),
+					_deviceName = $form.find( "input[name='devName']" ).val(),
+					_serialNumber = $form.find( "input[name='serialNumber']" ).val();
+
+				addNewDevice(_deviceName, _serialNumber);
+			});
+		</script>
 
 		<script src="map.js"></script>
 		<script src="map_modal.js"></script>
