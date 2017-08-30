@@ -188,9 +188,10 @@ function addSampleRow(index, sample)
 	row.onclick = function()
 	{
 		var cell = this.getElementsByTagName("td")[0];
-		var index = cell.innerHTML - 1;
+		var index = parseInt(cell.innerHTML);
 
 		var marker = findMarkerById(index);
+		marker.infoWindow.open(map, marker);
 
 		console.log("Sample number: " + index + " clicked");
 	};

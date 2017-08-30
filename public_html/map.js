@@ -1,7 +1,6 @@
 var map;
 var markerList = new Array();
 var markerUniqueId = 0;
-var markerIcon = "marker_icon.png";
 
 function initializeMap()
 {
@@ -19,18 +18,6 @@ function addMarker(latitude, longtitude, sample)
 	var _position = {lat: parseFloat(latitude), lng: parseFloat(longtitude)};
 	markerUniqueId = markerUniqueId + 1;
 
-	var _marker = new google.maps.Marker(
-	{
-		position: _position,
-		map: map,
-		icon: "marker_icon.png",
-		id: markerUniqueId,
-		timestamp: sample["timestamp"],
-		speed: sample["speed"],
-		acceleration: sample["acceleration"],
-		azimuth: sample["azimuth"]
-	});
-
 	var contentWindowString = "<div class='markerPopup'> " +
 		'<div class="markerPopupTitle">Sample Details</div>' +
 		 '<div class="markerPopupContent">' +
@@ -41,11 +28,37 @@ function addMarker(latitude, longtitude, sample)
 		 '</div>' +
 		"</div>";
 
-	var infoWindow = new google.maps.InfoWindow(
+	var _infoWindow = new google.maps.InfoWindow(
 		{
 			content: contentWindowString
 		}
 	);
+
+	var _icon = {
+		path: "M 500,10 C 229.4,10 10,229.4 10,500 10,770.6 229.4,990 500,990 770.6,990 990,770.6 990,500 990,229.4 770.6,10 500,10 Z M 286.4,826.5 462.2,500 286.4,173.5 824.9,500 286.4,826.5 Z",
+		fillColor: '#28a6f4',
+		fillOpacity: 0.8,
+		scale: 0.03,
+		strokeColor: '#2977f4',
+		strokeWeight: 1,
+		rotation: (parseInt(sample["azimuth"]) - 90)
+	}
+
+
+	var _marker = new google.maps.Marker(
+	{
+		position: _position,
+		map: map,
+		icon: _icon,
+		id: markerUniqueId,
+		infoWindow: _infoWindow,
+		timestamp: sample["timestamp"],
+		speed: sample["speed"],
+		acceleration: sample["acceleration"],
+		azimuth: sample["azimuth"]
+	});
+
+
 
 	/*
 	 * The google.maps.event.addListener() event waits for
@@ -53,7 +66,7 @@ function addMarker(latitude, longtitude, sample)
 	 * and before the opening of the infowindow defined styles
 	 * are applied.
 	 */
-	google.maps.event.addListener(infoWindow, 'domready', function() {
+	google.maps.event.addListener(_infoWindow, 'domready', function() {
 
 		 // Reference to the DIV which receives the contents of the infowindow using jQuery
 		 var iwOuter = $('.gm-style-iw');
@@ -103,21 +116,15 @@ function addMarker(latitude, longtitude, sample)
 	});
 
 	_marker.addListener('click', function() {
-			infoWindow.open(map, _marker);
+			_infoWindow.open(map, _marker);
 			var id = _marker.id;
+			console.log("Clicked sample nr: " + id);
 	});
 
 		// Event that closes the Info Window with a click on the map
 	google.maps.event.addListener(map, 'click', function() {
-		infoWindow.close();
+		_infoWindow.close();
 	});
-
-
-	// var _m =
-	// {
-	// 	id: markerUniqueId,
-	// 	marker: _marker
-	// }
 
 	markerList.push(_marker);
 
