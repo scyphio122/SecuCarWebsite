@@ -4,6 +4,7 @@
 		<title>SecuCar</title>
 		<!-- Include stylesheet -->
 		<link rel="stylesheet" href="styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Rambla" rel="stylesheet">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="jquery-3.2.1.js"></script>
@@ -15,50 +16,55 @@
 
 	</head>
 
-	<body  style="background-color:#2c2e30;">
+	<body>
 		<div id="mainPage" class="mainPage">
-			<div id="mainPageLeftPanel">
+			<div id="userDiv">
 
-				<table id="devicesTable">
-				<caption id="selectDeviceLabel" class="tableCaption">Select the device:</caption>
-					<tr id="headerTr">
-							<th>Device number</th>
-							<th>Device Name</th>
-							<th>Last known location</th>
-							<th>Serial Number</th>
-							<th>Firmware Version</th>
-					</tr>
-				</table>
-
-				<script type="text/javascript">
-					$('select').on('change', function() {
-						console.log("Select changed");
-						var idDevice = devicesList[$("#devicesSelect")[0].selectedIndex]["idDevice"];
-						getTrackList(idDevice);
-					})
-				</script>
 			</div>
 
-			<div id="verticalLineDiv">
-					<hr class="verticalLine">
-			</div>
+			<div id="dataDiv">
+				<div id="mainPageLeftPanel">
 
-			<div id="mainPageRightPanel">
-				<table id="trackTable" style="width:90%;">
-				<caption class="tableCaption">Select the track:</caption>
-					<tr id="headerTr">
-						<th>Track number</th>
-						<th>Track start date</th>
-						<th>Track start coordinates</th>
-						<th>Track end date</th>
-						<th>Track end coordinates</th>
-						<th>Track length [km]</th>
-						<th>Driving assessment</th>
-					</tr>
-				</table>
+					<table id="devicesTable">
+					<caption id="selectDeviceLabel" class="tableCaption">Select the device:</caption>
+						<tr id="headerTr">
+								<th>Device number</th>
+								<th>Device Name</th>
+								<th>Last known location</th>
+								<th>Serial Number</th>
+								<th>Firmware Version</th>
+						</tr>
+					</table>
+
+					<script type="text/javascript">
+						$('select').on('change', function() {
+							console.log("Select changed");
+							var idDevice = devicesList[$("#devicesSelect")[0].selectedIndex]["idDevice"];
+							getTrackList(idDevice);
+						})
+					</script>
+				</div>
+
+				<div id="verticalLineDiv">
+						<hr class="verticalLine">
+				</div>
+
+				<div id="mainPageRightPanel">
+					<table id="trackTable" style="width:90%;">
+					<caption class="tableCaption">Select the track:</caption>
+						<tr id="headerTr">
+							<th>Track number</th>
+							<th>Track start date</th>
+							<th>Track start coordinates</th>
+							<th>Track end date</th>
+							<th>Track end coordinates</th>
+							<th>Track length [km]</th>
+							<th>Driving assessment</th>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
-
 		<div id="modal_map" class="modal">
 
 			<div id="modal_map_content" class="modal-content">

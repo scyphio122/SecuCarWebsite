@@ -11,6 +11,8 @@ function initializeMap()
 		zoom: 18,
 		center: _initialLocation
 	});
+
+	$( "div#map").children().css("background-color", "#565650");
 }
 
 function addMarker(latitude, longtitude, sample)
