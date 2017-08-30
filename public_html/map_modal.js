@@ -28,4 +28,9 @@ window.onclick = function()
 	{
 		modal_map.style.display = "none";
 	}
+
+	if (event.target == document.getElementById("modal_add_device"))
+	{
+		document.getElementById("modal_add_device").style.display = "none";
+	}
 }

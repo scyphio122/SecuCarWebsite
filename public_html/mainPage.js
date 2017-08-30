@@ -28,6 +28,15 @@ window.onload = function()
 	}
 }
 
+// Close the modal when user clicks outside of it
+window.onclick = function()
+{
+	if (event.target == document.getElementById("modal_add_device"))
+	{
+		document.getElementById("modal_add_device").style.display = "none";
+	}
+}
+
 
 function initializeTrackTable()
 {

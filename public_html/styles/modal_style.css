@@ -1,0 +1,68 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #494444;
+    border: 1px solid #888;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #33322d;/*rgba(229, 229, 229, 0.9);*/
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: 100%;
+}
+
+.modal_title
+{
+  color: #14ebff;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+/* The Close Button */
+.close {
+    color: #ef1509;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+	background: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+#mapModalRightPanel
+{
+  height:90%;
+  width:30%;
+  float:left;
+  padding: 2%;
+}
+
+#modalTrackId
+{
+	height:2%;
+	width: 100%;
+}

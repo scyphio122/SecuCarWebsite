@@ -4,6 +4,8 @@
 		<!-- Include stylesheet -->
 		<link rel="stylesheet" href="styles_login.css">
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles/form_style.css">
+		<link rel="stylesheet" href="styles/modal_style.css">
 
 		<script src="login.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,25 +20,26 @@
 	<body>
 
 		<!--	LOGIN FORM  -->
-		<div id="formDiv">
+		<div id="mainPage">
+		<div id="loginFormDiv">
 			<form id="loginForm" action="http://localhost:9090/secucar/login">
 			  <div class="imgcontainer">
-				<img src="user_avatar.jpg" alt="Avatar" class="avatar">
+					<img src="user_avatar.jpg" alt="Avatar" class="avatar">
 			  </div>
 
 			  <div class="container">
-					<label><b>Username</b></label>
-					<input id="username" type="text" placeholder="Enter Username" name="username" required>
+					<div class="lineDiv"><label class="formTextLabel"><b>Username</b></label></div>
+					<div class="lineDiv"><input id="username" class="formTextInput loginInput" type="text" placeholder="Enter Username" name="username" required></div>
 
-					<label><b>Password</b></label>
-					<input id="password" type="password" placeholder="Enter Password" name="password" required>
+					<div class="lineDiv"><label class="formTextLabel"><b>Password</b></label></div>
+					<div class="lineDiv"><input id="password" class="formTextInput loginInput" type="password" placeholder="Enter Password" name="password" required></div>
 
-					<button id="loginButton" type="submit">Login</button>
+					<div class="lineDiv"><button id="loginButton" type="submit">Login</button></div>
 
 					<input type="checkbox" checked="checked"> Remember me
 			  </div>
 
-			  <div class="container" style="background-color:#f1f1f1">
+			  <div class="container">
 					<button id="registerUserButton" type="button" class="registerUserButton">Register User</button>
 					<span class="psw">Forgot <a href="#">password?</a></span>
 			  </div>
@@ -56,55 +59,58 @@
 					});
 				</script>
 		</div>
+	</div>
 
 		<!--	REGISTRATION FORM MODAL	 -->
-		<div id="registration_modal" class="registration_modal">
-			<div id="registration_modal_content" class="registration_modal_content">
+		<div id="registration_modal" class="modal">
+			<div id="registration_modal_content" class="modal-content">
 				<span id="registrationModalClose" class="close">&times;</span>
-				<h3 id="RegisterUserId"><center>Register User</center></h3>
+				<h2 id="RegisterUserId" class="modal_title"><center>Register User</center></h2>
 
-				<form id="registrationForm" action="http://localhost:9090/secucar/register">
-						<label><b>Username</b></label>
-						<input id="username" class="registrationInput" type="text" placeholder="Enter Username" name="username" required>
+				<div id="registrationFormDiv">
+					<form id="registrationForm" action="http://localhost:9090/secucar/register">
+							<div class="lineDiv"><label class="formTextLabel"><b>Username</b></label></div>
+							<div class="lineDiv"><input id="username" class="formTextInput" type="text" placeholder="Enter Username" name="username" required></div>
 
-						<label><b>Name</b></label>
-						<input id="name" class="registrationInput" type="text" placeholder="Enter Name" name="name" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Name</b></label></div>
+							<div class="lineDiv"><input id="name" class="formTextInput" type="text" placeholder="Enter Name" name="name" required></div>
 
-						<label><b>Surname</b></label>
-						<input id="surname" class="registrationInput" type="text" placeholder="Enter Surname" name="surname" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Surname</b></label></div>
+							<div class="lineDiv"><input id="surname" class="formTextInput" type="text" placeholder="Enter Surname" name="surname" required></div>
 
-						<label><b>Email</b></label>
-						<input id="email" class="registrationInput" type="text" placeholder="Enter Email" name="email" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Email</b></label></div>
+							<div class="lineDiv"><input id="email" class="formTextInput" type="text" placeholder="Enter Email" name="email" required></div>
 
-						<label><b>Telephone Number</b></label>
-						<input id="telephone" class="registrationInput" type="text" placeholder="Enter Telephone number" name="telephone" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Telephone Number</b></label></div>
+							<div class="lineDiv"><input id="telephone" class="formTextInput" type="text" placeholder="Enter Telephone number" name="telephone" required></div>
 
-						<label><b>City</b></label>
-						<input id="city" class="registrationInput" type="text" placeholder="Enter City" name="city">
+							<div class="lineDiv"><label class="formTextLabel"><b>City</b></label></div>
+							<div class="lineDiv"><input id="city" class="formTextInput" type="text" placeholder="Enter City" name="city"></div>
 
-						<label><b>Street</b></label>
-						<input id="street" class="registrationInput" type="text" placeholder="Enter Street" name="street">
+							<div class="lineDiv"><label class="formTextLabel"><b>Street</b></label></div>
+							<div class="lineDiv"><input id="street" class="formTextInput" type="text" placeholder="Enter Street" name="street"></div>
 
-						<label><b>Home number</b></label>
-						<input id="homeNumber" class="registrationInput" type="text" placeholder="Enter Home Number" name="homeNumber">
+							<div class="lineDiv"><label class="formTextLabel"><b>Home number</b></label></div>
+							<div class="lineDiv"><input id="homeNumber" class="formTextInput" type="text" placeholder="Enter Home Number" name="homeNumber"></div>
 
-						<label><b>Flat number</b></label>
-						<input id="flatNumber" class="registrationInput" type="text" placeholder="Enter Flat Number" name="flatNumber">
+							<div class="lineDiv"><label class="formTextLabel"><b>Flat number</b></label></div>
+							<div class="lineDiv"><input id="flatNumber" class="formTextInput" type="text" placeholder="Enter Flat Number" name="flatNumber"></div>
 
-						<label><b>Postal code</b></label>
-						<input id="postalCode" class="registrationInput" type="text" placeholder="Enter Postal Code" name="postalCode">
+							<div class="lineDiv"><label class="formTextLabel"><b>Postal code</b></label></div>
+							<div class="lineDiv"><input id="postalCode" class="formTextInput" type="text" placeholder="Enter Postal Code" name="postalCode"></div>
 
-						<label><b>Password</b></label>
-						<input id="password" class="registrationInput" type="password" placeholder="Enter Password" name="password" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Password</b></label></div>
+							<div class="lineDiv"><input id="password" class="formTextInput" type="password" placeholder="Enter Password" name="password" required></div>
 
-						<label><b>Repeat Password</b></label>
-						<input id="repeatPassword" class="registrationInput" type="password" placeholder="Repeat Password" name="repeatPassword" required>
+							<div class="lineDiv"><label class="formTextLabel"><b>Repeat Password</b></label></div>
+							<div class="lineDiv"><input id="repeatPassword" class="formTextInput" type="password" placeholder="Repeat Password" name="repeatPassword" required></div>
 
-						<button id="registerUserButton" type="submit">Register User</button>
+							<div class="lineDiv"><button id="registerUserButton" type="submit">Register User</button></div>
 
-						<button id="closeRegistrationButton" type="button" class="cancelbtn">Cancel</button>
+							<div class="lineDiv"><button id="closeRegistrationButton" type="button" class="cancelbtn">Cancel</button></div>
 
-				</form>
+					</form>
+				</div>
 			</div>
 			<script>
 				$( "#registrationForm" ).submit(function( event )
