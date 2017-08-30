@@ -88,7 +88,7 @@ function addMarker(latitude, longtitude, sample)
 		// Apply the desired effect to the close button
 		iwCloseBtn.css({
 		  opacity: '1', // by default the close button has an opacity of 0.7
-		  right: '50px', top: '0px', // button repositioning
+		  right: '-10px', top: '40px', // button repositioning
 		  border: '7px solid #48b5e9', // increasing button border and new color
 		  'border-radius': '13px', // circular effect
 		  'box-shadow': '0 0 5px #3990B9' // 3D effect to highlight the button
@@ -105,6 +105,11 @@ function addMarker(latitude, longtitude, sample)
 	_marker.addListener('click', function() {
 			infoWindow.open(map, _marker);
 			var id = _marker.id;
+	});
+
+		// Event that closes the Info Window with a click on the map
+	google.maps.event.addListener(map, 'click', function() {
+		infoWindow.close();
 	});
 
 
