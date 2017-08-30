@@ -66,8 +66,15 @@ function onReceivedTrackDetails(response)
   {
     var sampleList = response["samples"];
 
+    clearSamplesTable();
     for (var i = 0; i < sampleList.length; i++)
     {
+      // if (i == 0)
+      // {
+      //   var _latLng = sampleList[i]["coordinates"].split(';');
+      //   var _initialLocation = {lat: parseFloat(_latLng[0]), lng: parseFloat(_latLng[1])}; //	Wa
+      //   map.center = _initialLocation;
+      // }
       addSampleRow(i, sampleList[i]);
     }
   }

@@ -123,3 +123,36 @@ table tr:hover
   float:left;
   padding: 10px;
 }
+
+.markerPopup
+{
+  color: #48b5e9;
+  background-color: #565650;
+}
+
+.markerPopupTitle {
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-size: 22px;
+   font-weight: 400;
+   padding: 10px;
+   background-color: #48b5e9;
+   color: white;
+   margin: 1px;
+   border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+}
+
+.markerPopupContent
+{
+  padding-left:0.5em;
+}
+
+.gm-style-iw {
+   width: auto !important;
+   margin-top: 22px;
+   top: 30px !important;
+   left: 0 !important;
+   background-color: #565650;
+   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+   border: 1px solid rgba(72, 181, 233, 0.6);
+   border-radius: 2px 2px 10px 10px; // apply 10px to the bottom corners of the infowindow
+}

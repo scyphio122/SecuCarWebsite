@@ -10,7 +10,6 @@ window.onload = function()
 	getDevicesList(idUser);
 	//
 	initializeTrackTable();
-
 }
 
 
@@ -160,7 +159,7 @@ function addSampleRow(index, sample)
 	var cellString = "";
 
 	var _latLng = sample["coordinates"].split(';');
-	var marker = addMarker(_latLng[0], _latLng[1]);
+	var marker = addMarker(_latLng[0], _latLng[1], sample);
 
 	cell = row.insertCell(0);
 	cell.innerHTML = marker.id;
@@ -200,5 +199,5 @@ function addSampleRow(index, sample)
 function clearSamplesTable()
 {
 		markerUniqueId = 0;
-		$("#trackTable tr").not("#headerTr").remove();
+		$("#sampleTable tr").not("#headerTr").remove();
 }
