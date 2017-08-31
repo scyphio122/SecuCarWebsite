@@ -13,7 +13,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="jquery-3.2.1.js"></script>
-		<script src="login.js"></script>
 		<script src="mainPage.js"></script>
 		<script src="map.js"></script>
 		<script src="httpRequests.js"></script>
@@ -24,7 +23,8 @@
 	<body>
 		<div id="mainPage" class="mainPage">
 			<div id="userDiv">
-
+					<div style="float: left; width:98%;"><p id="username" class="text" style="text-align: right;">Logged in as:</p></div>
+					<div style="float: left; width:2%"><input id="getUserData" type="image" value="GetUserData" src="Icons/userDataIcon.png" style="padding-bottom: 1%; float:left"></div>
 			</div>
 
 			<div id="dataDiv">
@@ -125,8 +125,54 @@
 					_serialNumber = $form.find( "input[name='serialNumber']" ).val();
 
 				addNewDevice(_deviceName, _serialNumber);
+				document.getElementById("modal_add_device").style.display = "none";
 			});
 		</script>
+
+
+		<div id="user_data_modal" class="modal">
+			<div id="user_data_modal_content" class="modal-content">
+				<span id="userDataModalClose" class="close">&times;</span>
+				<h2 id="UserDataId" class="modal_title"><center>User data</center></h2>
+
+				<div id="userDataFormDiv">
+					<form id="userDataForm">
+							<div class="lineDiv"><label class="formTextLabel registrationLabel"><b>Username</b></label></div>
+							<div class="lineDiv"><input id="username" class="formTextInput registrationLabel" type="text" placeholder="Username" name="username" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Name</b></label></div>
+							<div class="lineDiv"><input id="name" class="formTextInput registrationLabel" type="text" placeholder="Name" name="name" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Surname</b></label></div>
+							<div class="lineDiv"><input id="surname" class="formTextInput registrationLabel" type="text" placeholder="Surname" name="surname" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Email</b></label></div>
+							<div class="lineDiv"><input id="email" class="formTextInput registrationLabel" type="text" placeholder="Email" name="email" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Telephone Number</b></label></div>
+							<div class="lineDiv"><input id="telephone" class="formTextInput registrationLabel" type="text" placeholder="Telephone number" name="telephone" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>City</b></label></div>
+							<div class="lineDiv"><input id="city" class="formTextInput registrationLabel" type="text" placeholder="City" name="city" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Street</b></label></div>
+							<div class="lineDiv"><input id="street" class="formTextInput registrationLabel" type="text" placeholder="Street" name="street" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Home number</b></label></div>
+							<div class="lineDiv"><input id="homeNumber" class="formTextInput registrationLabel" type="text" placeholder="Home Number" name="homeNumber" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Flat number</b></label></div>
+							<div class="lineDiv"><input id="flatNumber" class="formTextInput registrationLabel" type="text" placeholder="Flat Number" name="flatNumber" readonly></div>
+
+							<div class="lineDiv"><label class="formTextLabel"><b>Postal code</b></label></div>
+							<div class="lineDiv"><input id="postalCode" class="formTextInput registrationLabel" type="text" placeholder="Postal Code" name="postalCode" readonly></div>
+
+							<div class="lineDiv"><button id="changeUserData" class="submitButton" type="submit">Change User Data</button></div>
+							<div class="lineDiv"><button id="closeUserDataButton" class="cancelButton" type="button">Cancel</button></div>
+
+					</form>
+				</div>
+			</div>
 
 		<script src="map.js"></script>
 		<script src="map_modal.js"></script>

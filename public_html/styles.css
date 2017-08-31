@@ -72,3 +72,7 @@ html,body {
 {
 
 }
+
+input[type="image"]:focus {
+    outline: none;
+}

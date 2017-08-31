@@ -31,6 +31,7 @@ window.onload = function()
 
 function login(_url, _username, _password)
 {
+	username = _username;
 	http_post(_url, {"username": _username, "password": _password}, onLoginResponse);
 }
 

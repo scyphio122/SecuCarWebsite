@@ -3,6 +3,50 @@ var URL = "http://localhost:9090/secucar/"
 var devicesList;
 var tracksList;
 
+function getUserData(idUser)
+{
+  http_get(URL + "get_user_data",
+           {"idUser": parseInt(idUser)},
+           function(response)
+         {
+           if (response["result"] == 1)
+           {
+             var data = {
+                username: response["username"],
+                name: response["name"],
+                surname: response["surname"],
+                email: response["email"],
+                telephone: response["telephone"],
+                city: response["city"],
+                street: response["street"],
+                homeNumber: response["homeNumber"],
+                flatNumber: response["flatNumber"],
+                postalCode: response["postalCode"]
+             };
+
+         			// Get some values from elements on the page:
+         			var $form = $( "#userDataForm" );
+         			$form.find( "input[name='username']" ).val(data["username"]);
+         			$form.find( "input[name='name']" ).val(data["name"]);
+         			$form.find( "input[name='surname']" ).val(data["surname"]);
+         			$form.find( "input[name='email']" ).val(data["email"]);
+         			$form.find( "input[name='telephone']" ).val(data["telephone"]);
+         			$form.find( "input[name='city']" ).val(data["city"]);
+         			$form.find( "input[name='street']" ).val(data["street"]);
+         			$form.find( "input[name='homeNumber']" ).val(data["homeNumber"]);
+         			$form.find( "input[name='flatNumber']" ).val(data["flatNumber"]);
+         			$form.find( "input[name='postalCode']" ).val(data["postalCode"]);
+
+             return data;
+           }
+           else {
+             alert("Could not get user data");
+             return {};
+           }
+         })
+}
+
+
 function addNewDevice(_deviceName, _serialNumber)
 {
   if (idUser == -1)

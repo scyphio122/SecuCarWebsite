@@ -7,6 +7,7 @@ window.onload = function()
 	username = localStorage.getItem("username");
 	idUser = localStorage.getItem("idUser");
 
+	document.getElementById("username").innerHTML += " " + username + "   ";
 	getDevicesList(idUser);
 	//
 	initializeTrackTable();
@@ -27,6 +28,27 @@ window.onload = function()
 		document.getElementById("modal_add_device").style.display = "none";
 	}
 
+
+	document.getElementById("getUserData").onclick = function()
+	{
+			document.getElementById("user_data_modal").style.display = "block";
+
+			// Stop form from submitting normally
+			event.preventDefault();
+
+			getUserData(idUser);
+	}
+
+	// Close modal when user clics 'X' button
+	document.getElementById("userDataModalClose").onclick = function()
+	{
+			document.getElementById("user_data_modal").style.display = "none";
+	}
+
+	document.getElementById("closeUserDataButton").onclick = function()
+	{
+		document.getElementById("user_data_modal").style.display = "none";
+	}
 }
 
 // Close the modal when user clicks outside of it
