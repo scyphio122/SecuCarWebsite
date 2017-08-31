@@ -46,3 +46,12 @@
 {
    background-color: #565650;
 }
+
+span.icon-down-dir:before {
+    line-height: 0;
+    font-size: 60px;
+    text-align: left;
+    margin-top: 5px;
+    color: #027db9;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
