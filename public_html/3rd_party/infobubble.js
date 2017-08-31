@@ -1,38 +1,3 @@
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @scyphio122
-
-21
-192
-
-    153
-
-googlemaps/js-info-bubble
-Code
-Issues 20
-Pull requests 6
-Projects 0
-Wiki
-js-info-bubble/src/infobubble.js
-fdd5610 on 29 Sep 2016
-@Andreas-Schoenefeldt Andreas-Schoenefeldt Added a class to the js-info close icon
-@gigmaps
-@brendankenny
-@vxsx
-@Andreas-Schoenefeldt
-executable file 1781 lines (1442 sloc) 43.9 KB
-// ==ClosureCompiler==
-// @compilation_level ADVANCED_OPTIMIZATIONS
-// @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/maps/google_maps_api_v3_16.js
-// ==/ClosureCompiler==
-
 /**
  * @name CSS3 InfoBubble with tabs for Google Maps API V3
  * @version 0.8
@@ -249,6 +214,7 @@ InfoBubble.prototype.buildDom_ = function() {
   // Close button
   var close = this.close_ = document.createElement('IMG');
   close.style['position'] = 'absolute';
+  close.style['margin'] = '5px';
   close.style['border'] = 0;
   close.style['zIndex'] = this.baseZIndex_ + 1;
   close.style['cursor'] = 'pointer';
@@ -1808,17 +1774,3 @@ InfoBubble.prototype.positionCloseButton_ = function() {
   this.close_.style['right'] = this.px(right);
   this.close_.style['top'] = this.px(top);
 };
-
-    © 2017 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    API
-    Training
-    Shop
-    Blog
-    About
