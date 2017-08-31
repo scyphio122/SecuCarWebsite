@@ -4,6 +4,13 @@ html,body {
     font-family: 'Rambla', sans-serif;
 }
 
+.text
+{
+  padding-bottom: 10px;
+  font-size: 15px;
+  color: #14ebff;
+}
+
 #mainPage{
   float: left;
   width: 100%;
@@ -14,6 +21,9 @@ html,body {
 {
   width: 100%;
   height: 5%;
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
+  border-color: gray;
 }
 
 #dataDiv
@@ -27,7 +37,7 @@ html,body {
   float: left;
   width: 35%;
   height: 100%;
-
+	overflow:auto;
 }
 
 #verticalLineDiv
@@ -40,15 +50,17 @@ html,body {
 .verticalLine
 {
   float: left;
-  width: 2px;
+  width: 1px;
   height: 100%;
+
 }
 
 #mainPageRightPanel
 {
   float: left;
-  width: 65%;
+  width: 60%;
   height: 100%;
+  overflow:auto;
 }
 
 #selectDeviceLabel

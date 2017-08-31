@@ -2,7 +2,7 @@ table, tr, th, td
 {
   margin: auto;
 	border: 1px solid gray;
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .tableCaption

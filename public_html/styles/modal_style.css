@@ -59,6 +59,7 @@
   width:30%;
   float:left;
   padding: 2%;
+  overflow:auto;
 }
 
 #modalTrackId
