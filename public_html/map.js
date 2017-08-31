@@ -82,13 +82,32 @@ function addMarker(latitude, longtitude, sample)
 			console.log("Clicked sample nr: " + id);
 	});
 
+		_marker.addListener('mouseover', function() {
+			var id = _marker.id;
+			console.log("Moved over sample nr: " + id);
+			var rows = $('tr', document.getElementById("sampleTable"));
+			rows.eq(id).addClass('row_hover');
+	});
+
+	_marker.addListener('mouseout', function() {
+		var id = _marker.id;
+		console.log("Left sample nr: " + id);
+		var rows = $('tr', document.getElementById("sampleTable"));
+		rows.eq(id).removeClass('row_hover');
+	});
+
+
 		// Event that closes the Info Window with a click on the map
 	google.maps.event.addListener(map, 'click', function() {
 		_infoWindow.close();
 	});
 
-	markerList.push(_marker);
+	if (markerUniqueId == 1)
+	{
+		map.setCenter(_marker.getPosition());
+	}
 
+	markerList.push(_marker);
 	return _marker;
 }
 
