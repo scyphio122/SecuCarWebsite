@@ -21,7 +21,7 @@ input.formTextInput
   display: table-cell;
   color: #d3d3d3;
   background-color: #565650;
-  margin-bottom: 5%;
+  margin-bottom: 10px;
   width: 60%;
 }
 
