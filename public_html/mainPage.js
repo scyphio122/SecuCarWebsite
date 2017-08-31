@@ -26,6 +26,7 @@ window.onload = function()
 	{
 		document.getElementById("modal_add_device").style.display = "none";
 	}
+
 }
 
 // Close the modal when user clicks outside of it
@@ -255,6 +256,21 @@ function addSampleRow(index, sample)
 
 		console.log("Sample number: " + index + " clicked");
 	};
+
+	$('#sampleTable tr').not('#headerTr').on({
+	    mouseenter: function () {
+	        var cellIndex = $(this).index();
+					console.log("Entered row: " + cellIndex);
+					var marker = findMarkerById(cellIndex);
+					marker.infoWindow.open(map, marker);
+	    },
+	    mouseleave: function () {
+	        var cellIndex = $(this).index();
+					console.log("Left row: " + cellIndex);
+					var marker = findMarkerById(cellIndex);
+					marker.infoWindow.close();
+	    }
+	});
 }
 
 function clearSamplesTable()

@@ -17,10 +17,7 @@ function initializeMap()
 
 function addMarker(latitude, longtitude, sample)
 {
-	var _position = {lat: parseFloat(latitude), lng: parseFloat(longtitude)};
-	markerUniqueId = markerUniqueId + 1;
-
-
+		var _position = {lat: parseFloat(latitude), lng: parseFloat(longtitude)};
 		var _icon = {
 			path: "M 500,10 C 229.4,10 10,229.4 10,500 10,770.6 229.4,990 500,990 770.6,990 990,770.6 990,500 990,229.4 770.6,10 500,10 Z M 286.4,826.5 462.2,500 286.4,173.5 824.9,500 286.4,826.5 Z",
 			fillColor: '#28a6f4',
@@ -31,14 +28,14 @@ function addMarker(latitude, longtitude, sample)
 			rotation: (parseInt(sample["azimuth"]) - 90)
 		}
 
-
+		markerUniqueId = markerUniqueId + 1;
 		var _marker = new google.maps.Marker(
 		{
 			position: _position,
 			map: map,
 			icon: _icon,
 			id: markerUniqueId,
-			infoWindow: {},
+			infoWindow: null,
 			timestamp: sample["timestamp"],
 			speed: sample["speed"],
 			acceleration: sample["acceleration"],
