@@ -33,21 +33,26 @@ window.onload = function()
 	{
 			document.getElementById("user_data_modal").style.display = "block";
 
-			// Stop form from submitting normally
-			event.preventDefault();
-
-			getUserData(idUser);
+			getUserData(idUser, $( "#userDataForm" ));
 	}
 
 	// Close modal when user clics 'X' button
 	document.getElementById("userDataModalClose").onclick = function()
 	{
 			document.getElementById("user_data_modal").style.display = "none";
+			document.getElementById("changeUserData").innerHTML = "Change User Data";
+			$('#userDataForm input').not("#changeUserData #closeUserDataButton").each(function(){
+				$(this).prop('readonly', true);
+			});
 	}
 
 	document.getElementById("closeUserDataButton").onclick = function()
 	{
 		document.getElementById("user_data_modal").style.display = "none";
+		document.getElementById("changeUserData").innerHTML = "Change User Data";
+		$('#userDataForm input').not("#changeUserData #closeUserDataButton").each(function(){
+			$(this).prop('readonly', true);
+		});
 	}
 }
 

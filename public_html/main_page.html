@@ -134,7 +134,6 @@
 			<div id="user_data_modal_content" class="modal-content">
 				<span id="userDataModalClose" class="close">&times;</span>
 				<h2 id="UserDataId" class="modal_title"><center>User data</center></h2>
-
 				<div id="userDataFormDiv">
 					<form id="userDataForm">
 							<div class="lineDiv"><label class="formTextLabel registrationLabel"><b>Username</b></label></div>
@@ -169,10 +168,33 @@
 
 							<div class="lineDiv"><button id="changeUserData" class="submitButton" type="submit">Change User Data</button></div>
 							<div class="lineDiv"><button id="closeUserDataButton" class="cancelButton" type="button">Cancel</button></div>
-
 					</form>
 				</div>
 			</div>
+		</div>
+		<script>
+			$('#userDataForm').submit(function( event )
+			{
+				var button = document.getElementById("changeUserData");
+				// Stop form from submitting normally
+					event.preventDefault();
+					if (button.innerHTML == "Change User Data")
+					{
+						button.innerHTML = "Submit";
+						$('#userDataForm input').not("#username").each(function(){
+							$(this).prop('readonly', false);
+						});
+					}
+					else {
+						button.innerHTML = "Change User Data";
+						$('#userDataForm input').not("#changeUserData #closeUserDataButton").each(function(){
+							$(this).prop('readonly', true);
+						});
+
+						changeUserData($('#userDataForm'));
+					}
+				});
+		</script>
 
 		<script src="map.js"></script>
 		<script src="map_modal.js"></script>

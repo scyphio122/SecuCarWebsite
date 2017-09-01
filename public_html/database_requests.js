@@ -3,7 +3,7 @@ var URL = "http://localhost:9090/secucar/"
 var devicesList;
 var tracksList;
 
-function getUserData(idUser)
+function getUserData(idUser, $form)
 {
   http_get(URL + "get_user_data",
            {"idUser": parseInt(idUser)},
@@ -25,7 +25,6 @@ function getUserData(idUser)
              };
 
          			// Get some values from elements on the page:
-         			var $form = $( "#userDataForm" );
          			$form.find( "input[name='username']" ).val(data["username"]);
          			$form.find( "input[name='name']" ).val(data["name"]);
          			$form.find( "input[name='surname']" ).val(data["surname"]);
@@ -44,6 +43,42 @@ function getUserData(idUser)
              return {};
            }
          })
+}
+
+function changeUserData($form)
+{
+    // Get some values from elements on the page:
+      _username = $form.find( "input[name='username']" ).val(),
+      _name = $form.find( "input[name='name']" ).val(),
+      _surname = $form.find( "input[name='surname']" ).val(),
+      _email = $form.find( "input[name='email']" ).val(),
+      _telephone = $form.find( "input[name='telephone']" ).val(),
+      _city = $form.find( "input[name='city']" ).val(),
+      _street = $form.find( "input[name='street']" ).val(),
+      _homeNumber = $form.find( "input[name='homeNumber']" ).val(),
+      _flatNumber = $form.find( "input[name='flatNumber']" ).val(),
+      _postalCode = $form.find( "input[name='postalCode']" ).val();
+
+      http_post(URL + "change_user_data",
+               {"idUser": idUser,
+                "name": _name,
+                "surname": _surname,
+                "email": _email,
+                "telephone": _telephone,
+                "city": _city,
+                "street": _street,
+                "homeNumber": _homeNumber,
+                "flatNumber": _flatNumber,
+                "postalCode": _postalCode},
+                function(response){
+                  if (respone["result"] == 1)
+                  {
+                    return;
+                  }
+                  else {
+                      alert ("Could not change the data");
+                  }
+                })
 }
 
 
