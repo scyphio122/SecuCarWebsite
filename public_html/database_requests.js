@@ -143,6 +143,10 @@ function editDevice(indexOfDevice)
   console.log("Changing device name of idDevice: " + idDevice);
   var devName = prompt("Please enter new device name", "NewDevice");
 
+  // If cancel clicked
+  if (devName == null)
+     return;
+
   http_get(URL + "change_device_name",
           {"idDevice": idDevice,
            "deviceName": devName},
