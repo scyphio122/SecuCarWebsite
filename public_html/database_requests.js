@@ -2,6 +2,8 @@
 var URL = "http://localhost:9090/secucar/"
 var devicesList;
 var tracksList;
+var currentDevice;
+
 
 function getUserData(idUser, $form)
 {
@@ -199,6 +201,19 @@ function onReceivedTrackList(response)
     {
       addTrackRow(i, tracksList[i]);
     }
+  }
+}
+
+function deleteTrack(idTrack)
+{
+  http_get(URL + "delete_track", {"idTrack": idTrack},  onTrackDeleted);
+}
+
+function onTrackDeleted(response)
+{
+  if (response["result"] == 1)
+  {
+     getTrackList(currentDevice);
   }
 }
 

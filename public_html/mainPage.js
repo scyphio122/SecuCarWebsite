@@ -85,7 +85,7 @@ function addRowHandlers()
 		var row = rows[i];
 		row.onclick = function()
 		{
-			var cell = this.getElementsByTagName("td")[0];
+			var cell = row.getElementsByTagName("td")[0];
 			var trackId = (tracksList[cell.innerHTML])["idTrack"];
 			console.log("Row with trackId: " + trackId + " clicked");
 			// Open Map modal
@@ -162,9 +162,18 @@ function addDeviceRow(index, params)
 		var cell = this.getElementsByTagName("td")[0];
 		var index = cell.innerHTML - 1;
 		var deviceId = (devicesList[index])["idDevice"];
+                currentDevice = deviceId;
 		console.log("Row with deviceId: " + deviceId + " clicked");
 		getTrackList(deviceId);
 	};
+}
+
+function convertTimestampToDate(timestamp)
+{
+    console.log("Converting timestamp " + timestamp);
+    var date = new Date(timestamp * 1000).toUTCString();
+    console.log("Converted date is " + date); 
+    return date;
 }
 
 function clearDevicesList()
@@ -186,7 +195,7 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(1);
-	cell.innerHTML = params["startDate"];
+	cell.innerHTML = convertTimestampToDate(params["startDate"]);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
@@ -194,7 +203,7 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
-	cell.innerHTML = params["endDate"];
+	cell.innerHTML = convertTimestampToDate(params["endDate"]);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
@@ -208,9 +217,14 @@ function addTrackRow(index, params)
 	cell = row.insertCell(6);
 	cell.innerHTML = params["maneouverAssessment"];
 	cellString += cell.innerHTML + "; ";
-	row.onclick = function()
-	{
-		var cell = this.getElementsByTagName("td")[0];
+
+	cell = row.insertCell(7);
+        cell.style.width = '25px';
+        for (var i=0; i < (row.cells.length - 1); i++)
+        {
+            row.cells[i].onclick = function()
+	    {  
+		var cell = this.parentNode.getElementsByTagName("td")[0];
 		var index = cell.innerHTML - 1;
 		document.getElementById("modalTrackId").innerHTML = "Track Number: " + (index + 1);
 
@@ -220,7 +234,22 @@ function addTrackRow(index, params)
 		clearSamplesTable();
 		// Open Map modal
 		openMapModal(trackId);
+	    };
+        }
+
+        var btn = document.createElement('input');
+	btn.type = "image";
+	btn.className = "btn";
+	btn.value = "DeleteTrack";
+	btn.name = params["idTrack"];
+	btn.src = "Icons/delete.png";
+	btn.style.width = "17px";
+	btn.style.height = "17px";
+	btn.style.display = "inline";
+	btn.onclick = function() {
+		deleteTrack(parseInt(btn.name));
 	};
+	cell.appendChild(btn);
 
 	console.log("Adding row with parameters: " + cellString);
 }
@@ -254,7 +283,7 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(1);
-	cell.innerHTML = sample["timestamp"];
+	cell.innerHTML = convertTimestampToDate(sample["timestamp"]);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
@@ -262,11 +291,11 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
-	cell.innerHTML = sample["speed"];
+	cell.innerHTML = sample["speed"] / 100.0 + "km/h";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
-	cell.innerHTML = sample["acceleration"];
+	cell.innerHTML = sample["acceleration"] / 100.0 + "m/s^2";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
