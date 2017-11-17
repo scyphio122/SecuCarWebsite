@@ -17,7 +17,26 @@ function initializeMap()
 
 function addMarker(latitude, longtitude, sample)
 {
-		var _position = {lat: parseFloat(latitude), lng: parseFloat(longtitude)};
+	  var latSplitted = latitude.split("*");
+	  var lngSplitted = longtitude.split("*");
+
+		if (latSplitted[1][latSplitted[1].length - 1] == 'S')
+		{
+			latSplitted[0] *= -1;
+		}
+
+		if (lngSplitted[1][lngSplitted[1].length - 1] == 'W')
+		{
+			lngSplitted[0] *= -1;
+		}
+
+		latSplitted[1] = latSplitted[1].slice(0, -1);
+		lngSplitted[1] = lngSplitted[1].slice(0, -1);
+
+
+		var floatLat = parseFloat(latSplitted[0]) + parseFloat(latSplitted[1]/60);
+		var floatLng = parseFloat(lngSplitted[0]) + parseFloat(lngSplitted[1]/60);
+		var _position = {lat: parseFloat(floatLat), lng: parseFloat(floatLng)};
 		var _icon = {
 			//path: "M 500,10 C 229.4,10 10,229.4 10,500 10,770.6 229.4,990 500,990 770.6,990 990,770.6 990,500 990,229.4 770.6,10 500,10 Z M 286.4,826.5 462.2,500 286.4,173.5 824.9,500 286.4,826.5 Z",
 			path: "M0 -490C-270.6 -490 -490 -270.6 -490 0 -490 270.6 -270.6 490 0 490 270.6 490 490 270.6 490 0 490 -270.6 270.6 -490 0 -490zM-213.60000000000002 326.5 -37.80000000000001 0 -213.60000000000002 -326.5 324.9 0 -213.60000000000002 326.5z",
@@ -38,19 +57,19 @@ function addMarker(latitude, longtitude, sample)
 			icon: _icon,
 			id: markerUniqueId,
 			infoWindow: null,
-			timestamp: sample["timestamp"],
-			speed: sample["speed"],
-			acceleration: sample["acceleration"],
-			azimuth: sample["azimuth"]
+			timestamp: convertTimestampToDate(sample["timestamp"]),
+			speed: sample["speed"]/100,
+			acceleration: sample["acceleration"]/100,
+			azimuth: sample["azimuth"]/100
 		});
 
 		var contentWindowString = "<div class='markerPopup'> " +
 			'<div class="markerPopupTitle">Sample Details</div>' +
 			 '<div class="markerPopupContent">' +
-			 'Timestamp of sample: <br>' + sample["timestamp"] + '<br>' +
-			 'Speed: ' + sample["speed"] + " km/h" + '<br>' +
-			 'Acceleration: ' + sample["acceleration"] + " m/s^2" + '<br>' +
-			 'Azimuth: ' + sample["azimuth"] +
+			 'Timestamp of sample: <br>' + convertTimestampToDate(sample["timestamp"]) + '<br>' +
+			 'Speed: ' + sample["speed"]/100.0 + " km/h" + '<br>' +
+			 'Acceleration: ' + sample["acceleration"]*0.000598755 + " m/s^2" + '<br>' +
+			 'Azimuth: ' + sample["azimuth"]/100 +
 			 '</div>' +
 			 '<span class="icon-down-dir"></span>' +
 			"</div>";

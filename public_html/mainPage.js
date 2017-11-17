@@ -172,7 +172,7 @@ function convertTimestampToDate(timestamp)
 {
     console.log("Converting timestamp " + timestamp);
     var date = new Date(timestamp * 1000).toUTCString();
-    console.log("Converted date is " + date); 
+    console.log("Converted date is " + date);
     return date;
 }
 
@@ -223,7 +223,7 @@ function addTrackRow(index, params)
         for (var i=0; i < (row.cells.length - 1); i++)
         {
             row.cells[i].onclick = function()
-	    {  
+	    {
 		var cell = this.parentNode.getElementsByTagName("td")[0];
 		var index = cell.innerHTML - 1;
 		document.getElementById("modalTrackId").innerHTML = "Track Number: " + (index + 1);
@@ -287,7 +287,7 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
-	cell.innerHTML = sample["coordinates"];
+	cell.innerHTML = _latLng[0] + "\n" +  _latLng[1];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
@@ -295,11 +295,11 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
-	cell.innerHTML = sample["acceleration"] / 100.0 + "m/s^2";
+	cell.innerHTML = sample["acceleration"]*0.000598755 + "m/s^2";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
-	cell.innerHTML = sample["azimuth"];
+	cell.innerHTML = sample["azimuth"] / 100.0 ;
 	cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()
