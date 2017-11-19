@@ -55,7 +55,7 @@ function addMarker(latitude, longtitude, sample)
 		var _marker = new google.maps.Marker(
 		{
 			position: _position,
-			map: null,
+			map: map,
 			icon: _icon,
 			id: markerUniqueId,
 			infoWindow: null,

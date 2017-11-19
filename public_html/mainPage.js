@@ -224,7 +224,7 @@ function addTrackRow(index, params)
 	cell.innerHTML = convertTimestampToDate(params["endDate"]);
 	cellString += cell.innerHTML + "; ";
 	}
-	
+
 	_latLng = params["endLocation"].split(';');
 	if (_latLng != "")
 	{
@@ -350,6 +350,10 @@ function addSampleRow(index, sample)
 
 	cell = row.insertCell(7);
 	cell.innerHTML = (sample["hdop"]/100.0).toFixed(2);
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(8);
+	cell.innerHTML = (sample["fixStatus"]);
 	cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()
