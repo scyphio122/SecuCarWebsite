@@ -2,7 +2,7 @@ server {
 	listen 9090 default_server;
 	listen [::]:9090 default_server ipv6only=on;
 
-	root /var/www/secucar/public_html;
+	root /usr/share/nginx/html/secucar/public_html;
 	index index.html index.htm;
 
 	# Make site accessible from http://localhost/

@@ -37,13 +37,15 @@ function addMarker(latitude, longtitude, sample)
 		var floatLat = parseFloat(latSplitted[0]) + parseFloat(latSplitted[1]/60);
 		var floatLng = parseFloat(lngSplitted[0]) + parseFloat(lngSplitted[1]/60);
 		var _position = {lat: parseFloat(floatLat), lng: parseFloat(floatLng)};
+
+
 		var _icon = {
 			//path: "M 500,10 C 229.4,10 10,229.4 10,500 10,770.6 229.4,990 500,990 770.6,990 990,770.6 990,500 990,229.4 770.6,10 500,10 Z M 286.4,826.5 462.2,500 286.4,173.5 824.9,500 286.4,826.5 Z",
 			path: "M0 -490C-270.6 -490 -490 -270.6 -490 0 -490 270.6 -270.6 490 0 490 270.6 490 490 270.6 490 0 490 -270.6 270.6 -490 0 -490zM-213.60000000000002 326.5 -37.80000000000001 0 -213.60000000000002 -326.5 324.9 0 -213.60000000000002 326.5z",
 			anchor: new google.maps.Point(20,20),
 			fillColor: '#28a6f4',
 			fillOpacity: 0.8,
-			scale: 0.03,
+			scale: 0.015,
 			strokeColor: '#2977f4',
 			strokeWeight: 1,
 			rotation: (parseInt(sample["azimuth"]) - 90)
@@ -53,7 +55,7 @@ function addMarker(latitude, longtitude, sample)
 		var _marker = new google.maps.Marker(
 		{
 			position: _position,
-			map: map,
+			map: null,
 			icon: _icon,
 			id: markerUniqueId,
 			infoWindow: null,
@@ -130,6 +132,22 @@ function addMarker(latitude, longtitude, sample)
 
 	markerList.push(_marker);
 	return _marker;
+}
+
+function removeMarkers()
+{
+		for (var i = 0; i < markerList.length; i++)
+		{
+			markerList[i].setMap(null);
+		}
+}
+
+function displayMarkers(map)
+{
+		for (var i = 0; i < markerList.length; i++)
+		{
+			markerList[i].setMap(map);
+		}
 }
 
 function findMarker(marker)

@@ -84,7 +84,7 @@ function changeUserData($form)
 }
 
 
-function addNewDevice(_deviceName, _serialNumber)
+function addNewDevice(_deviceName, _serialNumber, _phoneNumber)
 {
   if (idUser == -1)
   {
@@ -101,8 +101,9 @@ function addNewDevice(_deviceName, _serialNumber)
            {"idUser": idUser,
             "deviceName": _deviceName,
             "serialNumber": _serialNumber,
+            "phoneNumber" : _phoneNumber,
             "currentLocation": "",
-            "firmwareVersion": "0"},
+            "firmwareVersion": "1.0.0"},
              function(response){
                if (response["result"] == 1)
                {

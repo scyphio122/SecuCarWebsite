@@ -2,7 +2,7 @@
 #map
 {
 	height: 85%;
-	width: 60%;
+	width: 50%;
 	float: left;
 	border: 2px solid blue;
 	margin: 10px;
@@ -29,6 +29,6 @@
 .markerPopupContent
 {
   padding-left:0.5em;
-  width: 150px;
+  width: 170px;
   height: 80px;
 }

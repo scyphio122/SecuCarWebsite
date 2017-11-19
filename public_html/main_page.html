@@ -29,13 +29,14 @@
 
 			<div id="dataDiv">
 				<div id="mainPageLeftPanel">
-					<div id="tableDiv" style="width: 100%; height: 88%;">
+					<div id="tableDiv" style="width: 90%; height: 88%; margin-left: 4%">
 							<table id="devicesTable">
 							<caption id="selectDeviceLabel" class="tableCaption">Select the device:</caption>
 								<tr id="headerTr">
 										<th>Device number</th>
 										<th>Device Name</th>
 										<th>Last known location</th>
+										<th>Phone Number</th>
 										<th>Serial Number</th>
 										<th>Firmware Version</th>
 								</tr>
@@ -77,21 +78,22 @@
 		</div>
 
 		<div id="modal_map" class="modal">
-
-			<div id="modal_map_content" class="modal-content">
+			<div id="modal_map_content" class="modal-content" style="width: 90%">
 				<span class="close">&times;</span>
 				<center><h2 id="modalTrackId" class="modal_title">Track number: </h2></center>
 				<div id="map" class="map"></div>
 				<div id="mapModalRightPanel">
-						<table id="sampleTable" style="margin-top:1%; width:90%;">
+						<table id="sampleTable" style="width:95%;">
 								<caption class="tableCaption">Samples:</caption>
 								<tr id="headerTr">
-									<th>Number</th>
+									<th>Sample number</th>
 									<th>Time</th>
 									<th>Coordinates</th>
-									<th>Speed [km/h]</th>
-									<th>Acceleration [m/s^2]</th>
+									<th>Speed<br>[km/h]</th>
+									<th>Acceleration<br>[m/s^2]</th>
 									<th>Azimuth</th>
+									<th>Number<br>of<br>satellites</th>
+									<th>HDOP</th>
 								</tr>
 						</table>
 				</div>
@@ -109,6 +111,9 @@
 							<div class="lineDiv"><label class="formTextLabel">Serial Number</label></div>
 							<div class="lineDiv"><input id="deviceSerialNumberInput" class="formTextInput" type="text" placeholder="Enter Serial Number" name="serialNumber" required></div>
 
+							<div class="lineDiv"><label class="formTextLabel">Device phone number</label></div>
+							<div class="lineDiv"><input id="devicePhoneNumberInput" class="formTextInput" type="text" placeholder="Enter Phone Number" name="phoneNumber" required></div>
+
 						<div class="lineDiv"><button id="newDeviceSubmitButton" class="submitButton" type="submit">Submit</button></div>
 						<div class="lineDiv"><button id="cancelDeviceRegistrationButton" class="cancelButton" type="button" class="cancelbtn">Cancel</button></div>
 					</form>
@@ -123,8 +128,9 @@
 				var $form = $( this ),
 					_deviceName = $form.find( "input[name='devName']" ).val(),
 					_serialNumber = $form.find( "input[name='serialNumber']" ).val();
+					_phoneNumber = $form.find( "input[name='phoneNumber']" ).val();
 
-				addNewDevice(_deviceName, _serialNumber);
+				addNewDevice(_deviceName, _serialNumber, _phoneNumber);
 				document.getElementById("modal_add_device").style.display = "none";
 			});
 		</script>

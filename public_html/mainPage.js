@@ -116,14 +116,18 @@ function addDeviceRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
-	cell.innerHTML = params["serialNumber"];
+	cell.innerHTML = params["phoneNumber"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
-	cell.innerHTML = ((params["firmwareVersion"] >> 16) & 0xFF) + "." + ((params["firmwareVersion"] >> 8) & 0xFF) + "." + (params["firmwareVersion"] & 0xFF);
+	cell.innerHTML = params["serialNumber"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
+	cell.innerHTML = params["firmwareVersion"];
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(6);
 	var btn = document.createElement('input');
 	btn.type = "image";
 	btn.className = "btn";
@@ -215,7 +219,7 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = params["maneouverAssessment"];
+	cell.innerHTML = params["trackAssessment"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
@@ -300,6 +304,14 @@ function addSampleRow(index, sample)
 
 	cell = row.insertCell(5);
 	cell.innerHTML = sample["azimuth"] / 100.0 ;
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(6);
+	cell.innerHTML = sample["numOfSattellites"] ;
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(7);
+	cell.innerHTML = sample["hdop"]/100.0;
 	cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()

@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #33322d;/*rgba(229, 229, 229, 0.9);*/
-    padding: 20px;
+    padding-left: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     height: 90%;
@@ -56,9 +56,8 @@
 #mapModalRightPanel
 {
   height:90%;
-  width:30%;
+  width:44%;
   float:left;
-  padding: 2%;
   overflow:auto;
 }
 

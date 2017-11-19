@@ -6,13 +6,22 @@ var closeButton = document.getElementsByClassName("close")[0];
 // Opening the modal
 function openMapModal(trackId)
 {
+	removeMarkers();
+	markerList = [];
+
 	// TODO: Here get the details about the track via HTTP request and fill the markers array
 	getSamplesList(trackId);
+
+	displayMarkers(map);
+	
 	// Display the modal window
 	modal_map.style.display = "block";
 	var currentCenter = map.getCenter();  // Get current center before resizing
 	google.maps.event.trigger(map, "resize");
 	map.setCenter(currentCenter); // Re-set previous center
+
+
+
 }
 
 // Close modal when user clics 'X' button
