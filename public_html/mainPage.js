@@ -176,6 +176,7 @@ function convertTimestampToDate(timestamp)
 {
     console.log("Converting timestamp " + timestamp);
     var date = new Date(timestamp * 1000).toUTCString();
+		date = date.slice(0, -3);
     console.log("Converted date is " + date);
     return date;
 }
@@ -194,6 +195,17 @@ function addTrackRow(index, params)
 	var cell;
 	var cellString = "";
 
+	var _latLng = params["startLocation"].split(';');
+	_latLng[0] = _latLng[0].slice(1);
+	_latLng[1] = _latLng[1].slice(0, -1);
+
+	var _lat = _latLng[0].split('*');
+	var _lng = _latLng[1].split('*');
+
+	var _latitude = "<div>" + _lat[0] + "&deg" + _lat[1] + "</div>";
+	var _longtitude = "<div>" + _lng[0] + "&deg" + _lng[1] + "</div>";
+
+
 	cell = row.insertCell(0);
 	cell.innerHTML = index + 1;
 	cellString += cell.innerHTML + "; ";
@@ -203,15 +215,35 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
-	cell.innerHTML = params["startLocation"];
+	cell.innerHTML = _latitude + "\n" + _longtitude;//params["startLocation"];
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
+	if (params["endDate"] != "0")
+	{
 	cell.innerHTML = convertTimestampToDate(params["endDate"]);
 	cellString += cell.innerHTML + "; ";
+	}
+	
+	_latLng = params["endLocation"].split(';');
+	if (_latLng != "")
+	{
+	_latLng[0] = _latLng[0].slice(1);
+	_latLng[1] = _latLng[1].slice(0, -1);
+
+	_lat = _latLng[0].split('*');
+	_lng = _latLng[1].split('*');
+
+	_latitude = "<div>" + _lat[0] + "&deg" + _lat[1] + "</div>";
+	_longtitude = "<div>" + _lng[0] + "&deg" + _lng[1] + "</div>";
+	}
+	else {
+			_latitude = "";
+			_longtitude = "";
+	}
 
 	cell = row.insertCell(4);
-	cell.innerHTML = params["endLocation"];
+	cell.innerHTML = _latitude + "\n" + _longtitude;
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
@@ -280,6 +312,12 @@ function addSampleRow(index, sample)
 	var cellString = "";
 
 	var _latLng = sample["coordinates"].split(';');
+	var _lat = _latLng[0].split('*');
+	var _lng = _latLng[1].split('*');
+
+	var _latitude = "<div>" + _lat[0] + "&deg" + _lat[1] + "</div>";
+	var _longitude = "<div>" + _lng[0] + "&deg" + _lng[1] + "</div>";
+
 	var marker = addMarker(_latLng[0], _latLng[1], sample);
 
 	cell = row.insertCell(0);
@@ -291,19 +329,19 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(2);
-	cell.innerHTML = _latLng[0] + "\n" +  _latLng[1];
+	cell.innerHTML = _latitude + "\n" + _longitude;
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(3);
-	cell.innerHTML = sample["speed"] / 100.0 + "km/h";
+	cell.innerHTML = (sample["speed"] / 100.0).toFixed(2);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(4);
-	cell.innerHTML = sample["acceleration"]*0.000598755 + "m/s^2";
+	cell.innerHTML = parseFloat(sample["acceleration"]*0.000598755).toFixed(2);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
-	cell.innerHTML = sample["azimuth"] / 100.0 ;
+	cell.innerHTML = (sample["azimuth"] / 100.0).toFixed(2);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
@@ -311,7 +349,7 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
-	cell.innerHTML = sample["hdop"]/100.0;
+	cell.innerHTML = (sample["hdop"]/100.0).toFixed(2);
 	cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()

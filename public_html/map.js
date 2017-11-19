@@ -69,9 +69,9 @@ function addMarker(latitude, longtitude, sample)
 			'<div class="markerPopupTitle">Sample Details</div>' +
 			 '<div class="markerPopupContent">' +
 			 'Timestamp of sample: <br>' + convertTimestampToDate(sample["timestamp"]) + '<br>' +
-			 'Speed: ' + sample["speed"]/100.0 + " km/h" + '<br>' +
-			 'Acceleration: ' + sample["acceleration"]*0.000598755 + " m/s^2" + '<br>' +
-			 'Azimuth: ' + sample["azimuth"]/100 +
+			 'Speed: ' + (sample["speed"]/100.0).toFixed(2) + " km/h" + '<br>' +
+			 'Acceleration: ' + parseFloat(sample["acceleration"]*0.000598755).toFixed(2) + " m/s^2" + '<br>' +
+			 'Azimuth: ' + (sample["azimuth"]/100).toFixed(2) + "°"
 			 '</div>' +
 			 '<span class="icon-down-dir"></span>' +
 			"</div>";

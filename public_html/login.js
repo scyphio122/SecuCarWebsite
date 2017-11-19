@@ -48,7 +48,7 @@ function onLoginResponse(response)
 	localStorage.setItem("idUser", idUser);
 	localStorage.setItem("username", username);
 
-	window.location.href = "main_page.html";
+	window.location.href = "main_page.html";//"http://89.77.116.157:9090/main_page.html";
 }
 
 function onForgotPasswd()
