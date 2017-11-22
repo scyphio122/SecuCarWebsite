@@ -1,5 +1,5 @@
 
-var URL = "http://localhost:9090/secucar/"
+var URL = "secucar/"
 var devicesList;
 var tracksList;
 var currentDevice;
