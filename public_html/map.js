@@ -48,7 +48,7 @@ function addMarker(latitude, longtitude, sample)
 			scale: 0.015,
 			strokeColor: '#2977f4',
 			strokeWeight: 1,
-			rotation: (parseInt(sample["azimuth"]) - 90)
+			rotation: (parseInt(sample["azimuth"]/100) - 90)
 		}
 
 		markerUniqueId = markerUniqueId + 1;
@@ -71,7 +71,7 @@ function addMarker(latitude, longtitude, sample)
 			 'Timestamp of sample: <br>' + convertTimestampToDate(sample["timestamp"]) + '<br>' +
 			 'Speed: ' + (sample["speed"]/100.0).toFixed(2) + " km/h" + '<br>' +
 			 'Acceleration: ' + parseFloat(sample["acceleration"]*0.000598755).toFixed(2) + " m/s^2" + '<br>' +
-			 'Azimuth: ' + (sample["azimuth"]/100).toFixed(2) + "°"
+			 '<div> Azimuth: ' + (sample["azimuth"]/100).toFixed(2) + "&deg</div>"
 			 '</div>' +
 			 '<span class="icon-down-dir"></span>' +
 			"</div>";

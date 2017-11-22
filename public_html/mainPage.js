@@ -315,6 +315,25 @@ function addSampleRow(index, sample)
 	var _lat = _latLng[0].split('*');
 	var _lng = _latLng[1].split('*');
 
+	var minutesLat = _lat[1].split('.');
+	var minutesLng = _lng[1].split('.');
+
+	if (minutesLat[1].slice(0, -1) < 1000)
+	{
+		minutesLat[1] = "0" + minutesLat[1];
+	}
+
+	if (minutesLng[1].slice(0, -1) < 1000)
+	{
+		minutesLng[1] = "0" + minutesLng[1];
+	}
+
+	_lat[1] = minutesLat[0] + "." + minutesLat[1];
+	_lng[1] = minutesLng[0] + "." + minutesLng[1];
+
+	_latLng[0] = _lat[0] + "*" + _lat[1];
+	_latLng[1] = _lng[0] + "*" + _lng[1];
+
 	var _latitude = "<div>" + _lat[0] + "&deg" + _lat[1] + "</div>";
 	var _longitude = "<div>" + _lng[0] + "&deg" + _lng[1] + "</div>";
 
@@ -368,17 +387,11 @@ function addSampleRow(index, sample)
 	};
 
 	$('#sampleTable tr').not('#headerTr').on({
-	    mouseenter: function () {
+	    click: function () {
 	        var cellIndex = $(this).index();
 					console.log("Entered row: " + cellIndex);
 					var marker = findMarkerById(cellIndex);
 					marker.infoWindow.open(map, marker);
-	    },
-	    mouseleave: function () {
-	        var cellIndex = $(this).index();
-					console.log("Left row: " + cellIndex);
-					var marker = findMarkerById(cellIndex);
-					marker.infoWindow.close();
 	    }
 	});
 }
