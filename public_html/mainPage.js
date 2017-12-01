@@ -364,7 +364,7 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = (sample["manouverAssessment"]);
+	cell.innerHTML = (sample["manouverAssessment"] + "%");
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
