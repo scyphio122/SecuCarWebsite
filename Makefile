@@ -11,3 +11,4 @@ install:
 	rm -f /etc/nginx/sites-enabled/${SECUCAR_SITE}
 	ln -s /etc/nginx/sites-available/${SECUCAR_SITE} /etc/nginx/sites-enabled/${SECUCAR_SITE}
 	service nginx restart
+	systemctl restart nginx.service
