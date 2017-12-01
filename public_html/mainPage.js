@@ -364,14 +364,18 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = sample["numOfSattellites"] ;
+	cell.innerHTML = (sample["manouverAssessment"] / 100.0).toFixed(2);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
-	cell.innerHTML = (sample["hdop"]/100.0).toFixed(2);
+	cell.innerHTML = sample["numOfSattellites"] ;
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(8);
+	cell.innerHTML = (sample["hdop"]/100.0).toFixed(2);
+	cellString += cell.innerHTML + "; ";
+
+	cell = row.insertCell(9);
 	cell.innerHTML = (sample["fixStatus"]);
 	cellString += cell.innerHTML + "; ";
 
