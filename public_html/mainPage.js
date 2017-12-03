@@ -228,7 +228,7 @@ function addTrackRow(index, params)
 	_latLng = params["endLocation"].split(';');
 	if (_latLng != "")
 	{
-	_latLng[0] = _latLng[0].slice(1);
+	_latLng[0] = _latLng[0].slice(0);
 	_latLng[1] = _latLng[1].slice(0, -1);
 
 	_lat = _latLng[0].split('*');
@@ -247,7 +247,7 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
-	cell.innerHTML = params["distance"];
+	cell.innerHTML = (params["distance"]/1000).toFixed(1);
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
