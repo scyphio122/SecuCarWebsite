@@ -251,7 +251,7 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = "<div>" + 100 - Math.parseInt(params["trackAssessment"]) + "%</div>";
+	cell.innerHTML = "<div>" + 100 - parseInt(params["trackAssessment"]) + "%</div>";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
