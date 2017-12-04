@@ -242,8 +242,10 @@ function onReceivedTrackDetails(response)
       //   var _initialLocation = {lat: parseFloat(_latLng[0]), lng: parseFloat(_latLng[1])}; //	Wa
       //   map.center = _initialLocation;
       // }
-      if (sampleList[i]["fixStatus"] != "0")
+        if (sampleList[i]["fixStatus"] != " 0")
+        {
           addSampleRow(i, sampleList[i]);
+        }
     }
   }
 }
