@@ -247,11 +247,11 @@ function addTrackRow(index, params)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(5);
-	cell.innerHTML = (params["distance"]/1000).toFixed(1);
+	cell.innerHTML = (params["distance"]/1000).toFixed(1) + "km";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = params["trackAssessment"];
+	cell.innerHTML = "<div>" + 100 - params["trackAssessment"] + "%</div>";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
