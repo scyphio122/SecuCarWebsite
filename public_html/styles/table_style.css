@@ -14,6 +14,7 @@ table, tr, th, td
 
 td
 {
+  height: 1px;
 	text-align: center;
 }
 
@@ -48,4 +49,15 @@ table tr:hover
 {
   color: #70e2ff;
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.manouverAssessment
+{
+  top: 50%;
+  transform: translate(-50%, 0);
+}
+
+.manouverAssessmentBar
+{
+  padding-bottom: 0;
 }

@@ -339,6 +339,9 @@ function addSampleRow(index, sample)
 
 	var marker = addMarker(_latLng[0], _latLng[1], sample);
 
+	var assessmentMark = parseInt(100 - sample["manouverAssessment"])/100.0;
+	//var assesment = "<div style=\"height: 100%; width: 100%; background-color: hsl(" + 128*assessmentMark + ", 100%, 50%)\">" + (100 - sample["manouverAssessment"] + "%") + "</div>";
+
 	cell = row.insertCell(0);
 	cell.innerHTML = marker.id;
 	cellString += cell.innerHTML + "; ";
@@ -364,20 +367,24 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(6);
-	cell.innerHTML = (100 - sample["manouverAssessment"] + "%");
-	cellString += cell.innerHTML + "; ";
-
-	cell = row.insertCell(7);
 	cell.innerHTML = sample["numOfSattellites"] ;
 	cellString += cell.innerHTML + "; ";
 
+	cell = row.insertCell(7);
+	cell.innerHTML = (100 - ((sample["hdop"]/100.0).toFixed(2) - 0.5)/(20 - 0.5)).toFixed(1) + "%";
+	cellString += cell.innerHTML + "; ";
+
 	cell = row.insertCell(8);
-	cell.innerHTML = (sample["hdop"]/100.0).toFixed(2);
+	cell.innerHTML = (100 - sample["manouverAssessment"] + "%");//assesment;
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(9);
-	cell.innerHTML = (sample["fixStatus"]);
+	cell.style["background-color"] = "hsl(" + 128*assessmentMark + ", 75%, 50%)";
 	cellString += cell.innerHTML + "; ";
+
+	// cell = row.insertCell(9);
+	// cell.innerHTML = (sample["fixStatus"]);
+	// cellString += cell.innerHTML + "; ";
 
 	row.onclick = function()
 	{
