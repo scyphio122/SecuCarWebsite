@@ -371,7 +371,7 @@ function addSampleRow(index, sample)
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(7);
-	cell.innerHTML = (100 - ((sample["hdop"]/100.0).toFixed(2) - 0.5)/(20 - 0.5)).toFixed(1) + "%";
+	cell.innerHTML = (100 - 100*((sample["hdop"]/100.0).toFixed(2) - 0.5)/(20 - 0.5)).toFixed(1) + "%";
 	cellString += cell.innerHTML + "; ";
 
 	cell = row.insertCell(8);
