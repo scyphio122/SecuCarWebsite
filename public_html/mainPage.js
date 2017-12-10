@@ -229,7 +229,7 @@ function addTrackRow(index, params)
 	if (_latLng != "")
 	{
 	_latLng[0] = _latLng[0].slice(0);
-	_latLng[1] = _latLng[1].slice(0, -1);
+	_latLng[1] = _latLng[1].slice(0);
 
 	_lat = _latLng[0].split('*');
 	_lng = _latLng[1].split('*');
