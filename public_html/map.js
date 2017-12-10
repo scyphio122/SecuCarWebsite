@@ -140,6 +140,7 @@ function removeMarkers()
 		for (var i = 0; i < markerList.length; i++)
 		{
 			markerList[i].setMap(null);
+			markerList[i].infoWindow.close();
 		}
 }
 
@@ -184,6 +185,7 @@ function removeMarker(marker)
 		if(markerList[i] === marker)
 		{
 			markerList[i].setMap(null);
+			markerList[i].infoWindow.close();
 			// Remove 1 element starting from i-th index
 			markerList.splice(i, 1);
 			return;
@@ -198,6 +200,7 @@ function removeMarkerById(id)
 		if(markerList[i].id === id)
 		{
 			markerList[i].marker.setMap(null);
+			markerList[i].infoWindow.close();
 			// Remove 1 element starting from i-th index
 			markerList.splice(i, 1);
 			return;
